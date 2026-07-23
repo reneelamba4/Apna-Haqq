@@ -1,0 +1,10 @@
+# Large research/working files, not read by app.py at runtime.
+# Keep these local — schemes_eligibility.json (the file the bot actually
+# loads) is tracked; these are the upstream scrape + verification working
+# copies used to build it.
+schemes_database_raw.json
+schemes_database_deduped.json
+
+__pycache__/
+*.pyc
+.DS_Store
