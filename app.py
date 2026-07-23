@@ -21,30 +21,45 @@ if _REDIS_URL:
 _memory_sessions = {}
 
 class SessionStore:
+    # Every Redis call is wrapped: a transient Redis outage must never
+    # crash a WhatsApp reply with a 500 — a rural user mid-conversation
+    # has no way to know "wait and retry" and would just see silence.
+    # On any Redis error we fall back to the in-memory dict for that one
+    # operation; if Redis recovers, the next call uses it again.
     def __getitem__(self, sender):
         if _redis_client:
-            raw = _redis_client.get(f"session:{sender}")
-            if raw is None:
-                raise KeyError(sender)
-            return json.loads(raw)
+            try:
+                raw = _redis_client.get(f"session:{sender}")
+                if raw is not None:
+                    return json.loads(raw)
+            except redis.exceptions.RedisError:
+                pass
         return _memory_sessions[sender]
 
     def __setitem__(self, sender, value):
         if _redis_client:
-            _redis_client.setex(f"session:{sender}", SESSION_TTL_SECONDS, json.dumps(value))
-        else:
-            _memory_sessions[sender] = value
+            try:
+                _redis_client.setex(f"session:{sender}", SESSION_TTL_SECONDS, json.dumps(value))
+                return
+            except redis.exceptions.RedisError:
+                pass
+        _memory_sessions[sender] = value
 
     def __contains__(self, sender):
         if _redis_client:
-            return _redis_client.exists(f"session:{sender}") == 1
+            try:
+                return _redis_client.exists(f"session:{sender}") == 1
+            except redis.exceptions.RedisError:
+                pass
         return sender in _memory_sessions
 
     def __delitem__(self, sender):
         if _redis_client:
-            _redis_client.delete(f"session:{sender}")
-        else:
-            _memory_sessions.pop(sender, None)
+            try:
+                _redis_client.delete(f"session:{sender}")
+            except redis.exceptions.RedisError:
+                pass
+        _memory_sessions.pop(sender, None)
 
 sessions = SessionStore()
 
