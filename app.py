@@ -524,6 +524,19 @@ def match(p):
     return r
 
 
+# Max valid numbered option per FLOW step — body.isdigit() alone lets an
+# out-of-range reply (e.g. "99" to a 3-option gender question) through
+# silently, where every *_MAP.get() falls back to None/a default and the
+# criterion is quietly dropped rather than rejected. Enforced below so a
+# mistyped reply gets a re-prompt instead of an unconstrained match.
+STEP_MAX_OPTION = {
+    "lang": 12, "state": 36, "age": 5, "gender": 3, "income": 4,
+    "ration": 4, "bank": 2, "occupation": 14, "marital": 4,
+    "caste": 4, "disability": 5, "land": 2, "worker_board": 3,
+}
+
+OUT_OF_RANGE_MSG = "Please pick a valid option number. / कृपया वैध पर्याय क्रमांक निवडा. / कृपया एक मान्य विकल्प संख्या चुनें. / કૃપા કરી માન્ય વિકલ્પ નંબર પસંદ કરો. / অনুগ্রহ করে একটি বৈধ বিকল্প সংখ্যা বেছে নিন। / தயவுசெய்து சரியான விருப்பத் தொகையைத் தேர்ந்தெடுக்கவும். / దయచేసి సరైన ఎంపిక సంఖ్యను ఎంచుకోండి. / ದಯವಿಟ್ಟು ಮಾನ್ಯ ಆಯ್ಕೆ ಸಂಖ್ಯೆಯನ್ನು ಆರಿಸಿ. / ദയവായി സാധുവായ ഓപ്ഷൻ നമ്പർ തിരഞ്ഞെടുക്കുക. / ଦୟାକରି ଏକ ବୈଧ ବିକଳ୍ପ ସଂଖ୍ୟା ବାଛନ୍ତୁ। / অনুগ্ৰহ কৰি এটা বৈধ বিকল্প সংখ্যা বাছক। / ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵੈਧ ਵਿਕਲਪ ਨੰਬਰ ਚੁਣੋ."
+
 def q(step, lang):
     if "q" in step: return step["q"]
     key = {"2":"mr","3":"hi","4":"gu","5":"bn","6":"ta","7":"te","8":"kn","9":"ml","10":"or","11":"as","12":"pa"}.get(lang,"en")
@@ -555,7 +568,13 @@ def whatsapp():
         msg.body("Please reply with a number / कृपया नंबर पाठवा / कृपया नंबर भेजें / કૃપા કરી નંબર મોકલો / অনুগ্রহ করে একটি সংখ্যা পাঠান / தயவுசெய்து ஒரு எண்ணை அனுப்பவும் / దయచేసి ఒక సంఖ్యను పంపండి / ದಯವಿಟ್ಟು ಒಂದು ಸಂಖ್ಯೆಯನ್ನು ಕಳುಹಿಸಿ / ദയവായി ഒരു നമ്പർ അയക്കുക / ଦୟାକରି ଏକ ସଂଖ୍ୟା ପଠାନ୍ତୁ / অনুগ্ৰহ কৰি এটা সংখ্যা পঠিয়াওক / ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਨੰਬਰ ਭੇਜੋ")
         return str(resp)
 
-    profile[FLOW[idx]["key"]] = body
+    step_key = FLOW[idx]["key"]
+    max_option = STEP_MAX_OPTION.get(step_key)
+    if max_option is not None and not (1 <= int(body) <= max_option):
+        msg.body(OUT_OF_RANGE_MSG)
+        return str(resp)
+
+    profile[step_key] = body
     session["profile"] = profile
     session["step"] = idx + 1
     sessions[sender] = session  # write back — the Redis-backed store returns a fresh copy per read, not a live reference
