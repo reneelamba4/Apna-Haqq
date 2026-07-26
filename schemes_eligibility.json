@@ -528,15 +528,17 @@
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Monthly financial assistance of Rs.2,750 to transgender/eunuch residents of Haryana aged 18 and above.",
-  "caveats": "Must have resided in Haryana for 5+ years; requires Civil Surgeon certificate confirming status; case transfers to Old Age Allowance Scheme at age 60; applicant must not be involved in unlawful activity.",
+  "benefit_summary": "Monthly financial assistance of Rs.3,000 to transgender/eunuch residents of Haryana aged 18 and above.",
+  "caveats": "Must have resided in Haryana for 5+ years; requires Civil Surgeon certificate confirming status; case transfers to Old Age Allowance Scheme at age 60; applicant must not be involved in unlawful activity. [Audit fix 2026-07-23] Rs.2,750 was the 01.04.2023-31.12.2023 rate; revised to Rs.3,000/month effective 01.01.2024 per socialjusticehry.gov.in.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "socialjusticehry.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "afag",
@@ -1069,17 +1071,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Financial grant of up to Rs.8,000 for artificial limbs/auxiliary equipment (tricycles, wheelchairs, hearing aids, braille kits, etc.) for persons with disabilities of any age in UP; up to Rs.10,000 for multi-disability cases needing more than one aid.",
-  "caveats": "Family income must be within the BPL limit (Rs.46,080/year rural, Rs.56,460/year urban); not eligible if benefited from a similar govt scheme in the last 3 years (1 year for regular students); allocated first-come-first-served against available funds.",
+  "benefit_summary": "Financial grant of up to Rs.15,000 per beneficiary (flat, raised from the earlier Rs.8,000/Rs.10,000 tiers effective FY2024-25) for artificial limbs/auxiliary equipment (tricycles, wheelchairs, hearing aids, braille kits, etc.) for persons with disabilities of any age in UP; the same Rs.15,000 maximum applies in one sanction for multi-disability cases needing more than one aid.",
+  "caveats": "Family income must be within the BPL limit (Rs.46,080/year rural, Rs.56,460/year urban); not eligible if benefited from a similar govt scheme in the last 3 years (1 year for regular students); allocated first-come-first-served against available funds. [Audit fix 2026-07-23] Grant raised to a flat Rs.15,000 (from Rs.8,000/10,000 tiers) effective FY2024-25, per uphwd.gov.in and The Statesman.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "income_threshold_varies_rural_urban"
+   "income_threshold_varies_rural_urban",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "divyangjan.upsdc.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "alsias",
@@ -2415,15 +2418,17 @@
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Free short-term agricultural vocational training plus a monthly stipend of Rs.500 and seed money of Rs.10,000 per participant, for educated unemployed rural youth (Class X passed) in Meghalaya who own/lease agricultural land.",
-  "caveats": "Selection based on merit and land ownership/lease for farm-based activities (land document not mandatory for non-farm agri-business).",
+  "benefit_summary": "Free short-term agricultural vocational training plus a monthly stipend of Rs.500 and seed money of Rs.1,00,000 per participant, for educated unemployed rural youth (Class X passed) in Meghalaya who own/lease agricultural land.",
+  "caveats": "Selection based on merit and land ownership/lease for farm-based activities (land document not mandatory for non-farm agri-business). [Audit fix 2026-07-23] TREYSEFA seed money raised from Rs.10,000 to Rs.1,00,000 in 2021; still Rs.1 lakh as of the June 2024 batch disbursement per Agriculture Post/India Education Diary.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "megagriculture.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "bbhs",
@@ -2563,10 +2568,7 @@
    "farmer"
   ],
   "marital_status": null,
-  "caste_category": [
-   "sc",
-   "st"
-  ],
+  "caste_category": null,
   "disability_required": null,
   "disability_percent_min": null,
   "land_ownership_required": true,
@@ -2574,14 +2576,16 @@
   "bank_account_required": true,
   "residency_required": true,
   "benefit_summary": "DBT subsidy for planting 16 perennial fruit crops (mango, cashew, guava, sapota, pomegranate, coconut, etc.), varying by crop (roughly Rs.43,596/ha to Rs.2,02,090/ha), paid over 3 years (50:30:20 split); land limits 0.10-10.00 ha (Konkan) or 0.20-6.00 ha (rest of Maharashtra).",
-  "caveats": "Requires 80% plant survival in year 1 and 90% in year 2 to receive later installments; drip irrigation separately 100% subsidized; requires Aadhaar-linked bank account and 7/12 + 8-A land certificates.",
+  "caveats": "Requires 80% plant survival in year 1 and 90% in year 2 to receive later installments; drip irrigation separately 100% subsidized; requires Aadhaar-linked bank account and 7/12 + 8-A land certificates. [Audit fix 2026-07-23] Removed incorrect caste_category=[sc,st] restriction. Official Maharashtra guideline confirms this is open to ALL farmers (General/SC/ST/women/disabled) with SC/ST/women/disabled given priority in fund allocation, not an eligibility gate. A general-category farmer was being wrongly told they don't qualify.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "https://mahadbt.maharashtra.gov.in/Farmer/PDF/Scheme-BhausahebPhundkarFalbaagLagvadYojana.pdf"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "bhsstg",
@@ -2883,14 +2887,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Cash award of Rs.2,00,000 (this category's original rate) plus a statue, scroll of honour, and blazer, for Odisha sportspersons (7+ years' residence) with outstanding performance during the year.",
-  "caveats": "RENAMED: the scheme was renamed 'Odisha Rajya Krida Samman' in July 2024; this category's updated rate is not individually confirmed post-rename. Not eligible if tested positive for banned substances; given once per lifetime; can be posthumous.",
+  "caveats": "RENAMED: the scheme was renamed 'Odisha Rajya Krida Samman' in July 2024; this category's updated rate is not individually confirmed post-rename. Not eligible if tested positive for banned substances; given once per lifetime; can be posthumous. [Audit fix 2026-07-23] The July 2024 rename to 'Odisha Rajya Krida Samman' was announced then REVERSED within 1-2 days after public backlash over dropping Biju Patnaik's name; CM Mohan Charan Majhi confirmed it would not proceed. The award remains officially named 'Biju Patnaik Sports Award' (confirmed via 2025-cycle award ceremony coverage and live myscheme.gov.in listing). Do not treat the rename as settled fact.",
   "source_confidence": "verified",
   "extraction_confidence": "low",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "business-standard.com"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "brfsy",
@@ -2948,15 +2954,17 @@
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Monthly scholarship for students with disabilities in Odisha, not covered by Central Government scholarships: Rs.400 (Class I-V), Rs.500 (VI-X), Rs.600 (+2/+3), Rs.700 (PG/technical/vocational); plus a reader's allowance (Rs.100-200/month) for visually impaired students and Rs.100/month transport allowance for 75%+ orthopedic disability.",
-  "caveats": "Family income must not exceed Rs.60,000/year (waived for BPL families); not available if already receiving a similar Central Government scholarship; continues regardless of pass/fail as long as regularly enrolled.",
+  "benefit_summary": "Monthly scholarship for students with disabilities in Odisha, not covered by Central Government scholarships: Rs.400 (Class I-V), Rs.500 (VI-X), Rs.600 (+2/+3), Rs.700 (PG/technical/vocational); plus a reader's allowance (Rs.200/300/400 per month (primary/middle-high/higher-PG-technical)) for visually impaired students and Rs.200/month transport allowance for 75%+ orthopedic disability.",
+  "caveats": "Family income must not exceed Rs.60,000/year (waived for BPL families); not available if already receiving a similar Central Government scholarship; continues regardless of pass/fail as long as regularly enrolled. [Audit fix 2026-07-23] Per Odisha Gazette Resolution 394/SSEPD (11.01.2022): Reader's Allowance is Rs.200 (primary)/Rs.300 (middle-high)/Rs.400 (higher/PG/technical) per month, not capped at Rs.200; Transport Allowance for 75%+ orthopedic disability is Rs.200/month, not Rs.100.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "ssepd.odisha.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "bsccs",
@@ -3925,7 +3933,7 @@
   "min_age": null,
   "max_age": null,
   "gender": "female",
-  "max_income": 72000,
+  "max_income": 120000,
   "ration_card_types": null,
   "occupation": null,
   "marital_status": null,
@@ -3937,15 +3945,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Rs 50,000 fixed deposit for one girl child of low-income Tamil Nadu families (income <=Rs72,000/yr), plus Rs1,800/year incentive from year 6; FD + interest paid at 18 if she appears for the 10th std board exam.",
-  "caveats": "Only for families with exactly one girl child and no male child (no future male adoption allowed). One parent must be sterilized before age 40. Also open to Sri Lankan Tamil refugee-camp girls in TN.",
+  "caveats": "Only for families with exactly one girl child and no male child (no future male adoption allowed). One parent must be sterilized before age 40. Also open to Sri Lankan Tamil refugee-camp girls in TN. [Audit fix 2026-07-23] Income ceiling raised from Rs.72,000 (2014 rate) to Rs.1,20,000/year per Dec 10, 2024 TN Social Welfare Dept circular; confirmed on tnsocialwelfare.tn.gov.in.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "tnsocialwelfare.tn.gov.in",
    "myscheme.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "cmgcpsii",
@@ -3955,7 +3965,7 @@
   "min_age": null,
   "max_age": null,
   "gender": "female",
-  "max_income": 72000,
+  "max_income": 120000,
   "ration_card_types": null,
   "occupation": null,
   "marital_status": null,
@@ -3967,15 +3977,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Rs 25,000 fixed deposit each for two girl children of low-income Tamil Nadu families (income <=Rs72,000/yr), plus Rs1,800/year incentive from year 6; FD + interest paid at 18 if she appears for the 10th std board exam.",
-  "caveats": "Only for families with exactly two girl children and no male child. One parent must be sterilized before age 40. Also open to Sri Lankan Tamil refugee-camp girls in TN.",
+  "caveats": "Only for families with exactly two girl children and no male child. One parent must be sterilized before age 40. Also open to Sri Lankan Tamil refugee-camp girls in TN. [Audit fix 2026-07-23] Income ceiling raised from Rs.72,000 to Rs.1,20,000/year; confirmed on the same official page as Scheme-I (tnsocialwelfare.tn.gov.in).",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "tnsocialwelfare.tn.gov.in",
    "myscheme.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "cmhap",
@@ -4219,17 +4231,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Monthly pension for persons with 40%+ disability in Rajasthan: Rs 750/month (below 55 women/58 men) or Rs 1,000/month (55/58-74); scheme text also lists Rs1,250 (75+) and Rs1,500 (leprosy-free) tiers.",
-  "caveats": "Verification note only explicitly confirms the Rs750 and Rs1,000 tiers - the higher elderly/leprosy-free tiers are per original scheme text but unconfirmed by verification.",
+  "benefit_summary": "Monthly pension for persons with 40%+ disability in Rajasthan: Rs 750/month (below 55 women/58 men), Rs 1,000/month (55/58-74), Rs 1,250/month (75+), Rs 1,500/month for silicosis patients, and Rs 2,500/month (the highest tier) for leprosy-free/leprosy-cured persons.",
+  "caveats": "Verification note only explicitly confirms the Rs750 and Rs1,000 tiers - the higher elderly/leprosy-free tiers are per original scheme text but unconfirmed by verification. [Audit fix 2026-07-23] Fixed tier misattribution: Rs 1,500/month is the silicosis tier, not leprosy-free. The separate, higher Rs 2,500/month leprosy-free tier was missing entirely and has been added.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "partial_verification_of_tiered_amounts"
+   "partial_verification_of_tiered_amounts",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "sje.rajasthan.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "cmsrdf",
@@ -4541,15 +4554,17 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": false,
-  "benefit_summary": "Merit scholarship for students in the top 20th percentile of their board in Class 12, pursuing regular degree courses: Rs10,000-12,000/year (UG years 1-3), Rs20,000/year (year 4-5 or PG).",
-  "caveats": "Cannot be combined with any other scholarship or fee-waiver scheme; renewal each year requires minimum 50% marks and 75% attendance.",
+  "benefit_summary": "Merit scholarship for students in the top 20th percentile of their board in Class 12, pursuing regular degree courses: Rs.12,000/year (flat) (UG years 1-3), Rs20,000/year (year 4-5 or PG).",
+  "caveats": "Cannot be combined with any other scholarship or fee-waiver scheme; renewal each year requires minimum 50% marks and 75% attendance. [Audit fix 2026-07-23] UG years 1-3 rate is a flat Rs.12,000/year (not a Rs.10,000-12,000 range), effective FY2024-25 -- the Rs.10,000 rate was superseded.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "myscheme.gov.in/schemes/csss-cus"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "csss",
@@ -4902,17 +4917,18 @@
   "worker_board_registration_required": true,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Financial assistance to nominee/dependent of a registered Goa construction worker on death: scheme text states Rs30,000 (natural death)/Rs1,00,000 (accidental death); verification note instead cites a reaffirmed/expanded Rs50,000 death benefit (May 2026 announcement).",
-  "caveats": "Figures possibly updated/expanded per a May 2026 CM Sawant Labour Day announcement, which also added a new Rs25,000 construction-injury assistance (not yet reflected in this record) - verify current tier structure locally.",
+  "benefit_summary": "Flat Rs.50,000 death compensation (under insurance coverage) to a Goa construction worker's family, announced by CM Pramod Sawant on Labour Day (1 May 2026), replacing the earlier differentiated Rs.30,000 (natural)/Rs.1,00,000 (accidental) structure. A new Rs.25,000 one-time injury assistance benefit was introduced at the same time.",
+  "caveats": "Figures possibly updated/expanded per a May 2026 CM Sawant Labour Day announcement, which also added a new Rs25,000 construction-injury assistance (not yet reflected in this record) - verify current tier structure locally. [Audit fix 2026-07-23] Updated to lead with the current May 2026 announcement (Rs.50,000 flat + Rs.25,000 injury benefit) rather than presenting the superseded Rs.30,000/Rs.1,00,000 tiers as current, per goemkarponn.com and Prudent Media.",
   "source_confidence": "verified",
   "extraction_confidence": "low",
   "extraction_flags": [
-   "ambiguous_amount_conflicting_with_verification_note"
+   "ambiguous_amount_conflicting_with_verification_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "goemkarponn.com"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "dbabocwwb",
@@ -4933,17 +4949,18 @@
   "worker_board_registration_required": true,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Financial assistance to nominee/dependent of a registered Assam construction worker on death: scheme text states Rs50,000 (natural)/Rs3,00,000 (accidental); verification note instead cites Rs1,00,000 (natural)/Rs2,00,000 (accidental) as the commonly cited figure.",
-  "caveats": "Conflicting amounts between source text and verification note - verify the current figure locally before advising.",
+  "benefit_summary": "Financial assistance to nominee/dependent of a registered Assam construction worker on death: Rs.50,000 for natural death, Rs.3,00,000 for accidental death, plus a separate Rs.5,000 funeral-expense assistance.",
+  "caveats": "Resolved per the official Assam Commissionerate of Labour page: Rs.50,000 (natural)/Rs.3,00,000 (accidental) + Rs.5,000 funeral assistance are the correct current figures. The Rs.1,00,000/Rs.2,00,000 'verification note' alternative was unsupported and has been dropped -- it likely conflated this with the separate PMJJBY/PMSBY central insurance add-on. [Audit fix 2026-07-23] Ambiguity resolved in favor of the original Rs.50,000/Rs.3,00,000 figures per direct fetch of labourcommissioner.assam.gov.in.",
   "source_confidence": "verified",
   "extraction_confidence": "low",
   "extraction_flags": [
-   "ambiguous_amount_conflicting_with_verification_note"
+   "ambiguous_amount_conflicting_with_verification_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "abocwwb.assam.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "dbhs-2bhks",
@@ -5153,17 +5170,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Rs25,000 (Rs15,000 ECS + Rs10,000 NSC) plus an 8g 22-carat gold coin, for widow remarriage in Tamil Nadu, specifically for widows holding a degree/diploma (this is 'Scheme-II').",
-  "caveats": "Distinguished from Scheme-I by requiring the widow to hold a degree/diploma. A verification note mentioning a Rs50,000 'tier II' likely refers to a related inter-caste marriage scheme, not confirmed for this specific scheme.",
+  "benefit_summary": "Rs.50,000 (Rs.30,000 ECS + Rs.20,000 NSC) plus an 8g 22-carat gold coin, for widow remarriage in Tamil Nadu, specifically for widows holding a degree/diploma (this is 'Scheme-II').",
+  "caveats": "Distinguished from Scheme-I (non-graduate widows, Rs.25,000 = Rs.15,000 ECS + Rs.10,000 NSC, same gold coin) by requiring the widow to hold a degree/diploma. [Audit fix 2026-07-23] Fixed reversed figures: Scheme-II (graduate/diploma widows) pays Rs.50,000, not Rs.25,000 -- Rs.25,000 is Scheme-I's amount. Confirmed via tnsocialwelfare.tn.gov.in.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "duplicate_scheme_variant_ambiguity"
+   "duplicate_scheme_variant_ambiguity",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "tnsocialwelfare.tn.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "dddrs",
@@ -5592,14 +5610,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Marriage assistance in Gujarat for disabled persons: Rs75,000 for a mixed couple (one disabled + one non-disabled, raised from Rs50,000 in June 2025), or Rs1,00,000 total (Rs50,000 each) when both spouses are disabled.",
-  "caveats": "One-time benefit per couple; must apply within 2 years of marriage. Disability percentage threshold varies by condition type (40-100%). It is not fully confirmed whether the both-disabled tier has also risen.",
+  "caveats": "One-time benefit per couple; must apply within 2 years of marriage. Disability percentage threshold varies by condition type (40-100%). It is not fully confirmed whether the both-disabled tier has also risen. [Audit fix 2026-07-23] Age eligibility is gender-specific per sje.gujarat.gov.in: bride must be 18+, groom must be 21+. min_age=18 (kept as the lower/bride threshold) understates the requirement for a male applicant aged 18-20, who is NOT actually eligible as groom -- flagging since our schema has no per-gender age field.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "https://indiatribune.com/public/gujarat-raises-divyang-marriage-aid-to-rs-75000"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "dmrnicmasi",
@@ -5740,22 +5760,23 @@
   "marital_status": null,
   "caste_category": null,
   "disability_required": true,
-  "disability_percent_min": 40,
+  "disability_percent_min": 50,
   "land_ownership_required": null,
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Rs1,500/month pension for disabled persons in Punjab, family income <=Rs60,000/year.",
-  "caveats": "Eligibility text states disability must be >50%, but verification note confirms a 40%+ threshold - the more recent verification figure (40%) is used here; confirm current threshold locally.",
+  "caveats": "Requires disability >50% (mentally disabled/retarded persons exempt from the percentage requirement). Family annual income limit Rs.60,000/year. [Audit fix 2026-07-23] Corrected disability_percent_min from 40 to 50 per the official Punjab Dept of Social Security page (sswcd.punjab.gov.in), which explicitly states <50% disability is NOT eligible. The prior 40% figure traced to a single non-official aggregator that itself cited (and contradicted) the official 50% source.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "disability_threshold_conflict_eligibility_vs_note"
+   "disability_threshold_conflict_eligibility_vs_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "sswcd.punjab.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "dpwb",
@@ -5807,17 +5828,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Rs1,500/month disability pension (raised from Rs1,000 in mid-2026) for 40%+ disabled Uttar Pradesh residents below the poverty line.",
-  "caveats": "Rural poverty line is Rs46,080/year, urban is Rs56,460/year (the higher urban figure is used here). Not eligible if already receiving old-age/widow/similar pension or free institutional maintenance.",
+  "benefit_summary": "Rs.1,000/month pension (paid quarterly as Rs.3,000) for persons with disabilities in Uttar Pradesh.",
+  "caveats": "A raise to Rs.1,500/month was announced/proposed as part of the UP 2026-27 state budget, but as of July 2026 the official UP pension portal (sspy.up.in) itself states the current disbursed amount remains Rs.1,000/month and explicitly describes Rs.1,500 as still 'expected,' not yet implemented. Do not present Rs.1,500 as the current benefit. [Audit fix 2026-07-23] Reverted from 'already raised to Rs.1,500' (not yet true) back to the actually-disbursed Rs.1,000/month, with a caveat about the pending-but-unimplemented hike -- mirroring how the West Bengal disability pension (dpwb) record handles its own analogous pending-increase situation.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "income_threshold_varies_rural_urban"
+   "income_threshold_varies_rural_urban",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "sspy-up.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "dr",
@@ -6157,19 +6179,20 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Cashless family health insurance (Rs5 lakh/family/year) for Andhra Pradesh rice-card holders and income-eligible families (<=Rs5 lakh/year); scheme renamed 'Dr NTR Vaidya Seva' after the July 2024 change of government.",
-  "caveats": "2025 reporting shows hospital payment dues (~Rs2,500 crore) and a suspension risk at 380 hospitals - verify claim status locally; cashless service is not always guaranteed currently.",
+  "benefit_summary": "Cashless family health insurance for Andhra Pradesh rice-card holders and income-eligible families (<=Rs5 lakh/year): up to Rs.25 lakh/family/year (Rs.2.5 lakh insurer-funded + Rs.22.5 lakh via the Dr NTR Vaidya Seva Trust) following the AP Cabinet's September 2025 Universal Health Insurance Policy approval; APL families remain capped at Rs.5 lakh. Scheme renamed 'Dr NTR Vaidya Seva' after the July 2024 change of government.",
+  "caveats": "2025 reporting shows hospital payment dues (~Rs2,500 crore) and a suspension risk at 380 hospitals - verify claim status locally; cashless service is not always guaranteed currently. [Audit fix 2026-07-23] For this record's targeted BPL/income-eligible population, cover rose from a flat Rs.5 lakh to up to Rs.25 lakh/family/year after the Sept 2025 Cabinet-approved revamp.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
    "scheme_renamed_superseded",
-   "service_disruption_risk_reported"
+   "service_disruption_risk_reported",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "drntrvaidyaseva.ap.gov.in",
    "thesouthfirst.com"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "e-m",
@@ -6479,18 +6502,19 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": false,
-  "benefit_summary": "Education loan for Backward Class students via NBCFDC: 90% of course cost (cap Rs15 lakh for study in India / Rs20 lakh abroad) at 4% (boys)/3.5% (girls) interest.",
-  "caveats": "Verification note suggests the record may actually describe the Central Sector Interest Subsidy Scheme (Ministry of Education) instead - 100% interest subsidy on loans up to Rs10 lakh for EWS families (income <=Rs4.5 lakh), now on the PM-Vidyalaxmi/Jan Samarth portal. Confirm which scheme applies before advising a specific applicant.",
+  "benefit_summary": "Education loan for Backward Class students via NBCFDC: 90% of course cost (cap Rs.15 lakh) for study in India, but only 85% of course cost (cap Rs.20 lakh) for study abroad -- not 90% for both -- at 4% (general) / 3.5% (girls) interest.",
+  "caveats": "Verification note suggests the record may actually describe the Central Sector Interest Subsidy Scheme (Ministry of Education) instead - 100% interest subsidy on loans up to Rs10 lakh for EWS families (income <=Rs4.5 lakh), now on the PM-Vidyalaxmi/Jan Samarth portal. Confirm which scheme applies before advising a specific applicant. [Audit fix 2026-07-23] NBCFDC Education Loan Scheme covers 90% of course expenditure for study in India (cap Rs.15 lakh) but only 85% for study abroad (cap Rs.20 lakh) -- not 90% for both. If the benefit_summary text didn't auto-match for replacement, manually verify and correct it to reflect this 90%/85% split.",
   "source_confidence": "verified",
   "extraction_confidence": "low",
   "extraction_flags": [
-   "scheme_identity_ambiguous_per_verification_note"
+   "scheme_identity_ambiguous_per_verification_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "jansamarth.in",
    "buddy4study.com"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "ess",
@@ -6878,7 +6902,7 @@
   "state": "Telangana",
   "level": "state",
   "min_age": 18,
-  "max_age": 60,
+  "max_age": 59,
   "gender": null,
   "max_income": null,
   "ration_card_types": null,
@@ -6894,14 +6918,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Rs5 lakh life insurance cover (any cause of death) for Telangana farmers aged 18-60, premium fully paid by the state government via LIC, payout within 10 days of death.",
-  "caveats": "Functionally the same scheme as 'Rythu Bima' - no separate rebrand beyond that commonly used name.",
+  "caveats": "Functionally the same scheme as 'Rythu Bima' - no separate rebrand beyond that commonly used name. [Audit fix 2026-07-23] Corrected max_age from 60 to 59 -- Rythu Bima eligibility is 18-59; farmers who turn 60 are no longer eligible for fresh enrollment, per myscheme.gov.in and a Telangana High Court judgment quoting the scheme rule.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "myscheme.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "faotndodap",
@@ -8536,7 +8562,7 @@
   "min_age": null,
   "max_age": null,
   "gender": null,
-  "max_income": 120000,
+  "max_income": 250000,
   "ration_card_types": null,
   "occupation": [
    "student"
@@ -8550,16 +8576,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Rs 20,000/year financial assistance for graduate/postgraduate students from underprivileged categories (HIV/AIDS-affected families, homeless, destitute, manual scavengers, particularly vulnerable tribal groups, released bonded labourers, single-mother families) studying in Odisha institutions.",
-  "caveats": "Can be availed alongside other scholarships; limited to normal course duration.",
+  "caveats": "Can be availed alongside other scholarships; limited to normal course duration. [Audit fix 2026-07-23] Income ceiling raised from Rs.1,20,000 (the original 2019 GO ceiling) to Rs.2,50,000/year per a November 2023 DHE guideline, confirmed by current scholarship-portal listings.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "ambiguous_income_threshold"
+   "ambiguous_income_threshold",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "egovtschemes.com"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "gvatbshsdocfvs",
@@ -8583,16 +8610,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Full reimbursement of Value Added Tax paid on HSD (diesel) oil consumed by registered fishing vessels, subject to a statewide quota of 20,000 KL of oil per financial year.",
-  "caveats": "Applicant must hold a valid Net Licence and Fishing Licence, must not be a Fisheries Department defaulter, and must procure oil from an approved outlet.",
+  "caveats": "Applicant must hold a valid Net Licence and Fishing Licence, must not be a Fisheries Department defaulter, and must procure oil from an approved outlet. [Audit fix 2026-07-23] As of June 2026, the Goa Fishing Boat Owners Association publicly stated this VAT-diesel subsidy 'has been discontinued in Goa' with prior-year dues unpaid, contrasting with Maharashtra/Karnataka's still-active fuel subsidies. Do not present as currently/reliably disbursed -- flag this to users as uncertain/likely inactive pending restoration.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "occupation_field_corrected_2026-07-23"
+   "occupation_field_corrected_2026-07-23",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "myscheme.gov.in/schemes/gvatbshsdocfvs"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "gwwh",
@@ -9332,18 +9360,19 @@
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Financial assistance of about Rs 5,000 (re-confirmed figure; the raw scheme benefit text stated Rs 25,000) for ex-servicemen/widows of ex-servicemen registered with Dept of Sainik Welfare Puducherry who suffered a severe injury in a road/fire accident.",
-  "caveats": "Not eligible if a member of the Ex-Servicemen Contributory Health Scheme (ECHS).",
+  "benefit_summary": "One-time Rs.25,000 spot assistance for ex-servicemen/widows registered with the Dept of Sainik Welfare Puducherry who suffered a severe injury in a road/fire accident or other mishap including natural calamities.",
+  "caveats": "Not eligible if a member of the Ex-Servicemen Contributory Health Scheme (ECHS). [Audit fix 2026-07-23] Reverted an incorrect prior 'Rs.5,000 re-confirmed' override back to Rs.25,000 -- the official Puducherry Sainik Welfare Dept page (sainik.py.gov.in/assistance-affd-fund) states Rs.25,000 verbatim; Rs.5,000 traced to an outdated third-party aggregator only.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
    "amount_conflicts_between_source_sections",
-   "occupation_field_corrected_2026-07-23"
+   "occupation_field_corrected_2026-07-23",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "sainik.py.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "iftsm",
@@ -9366,18 +9395,19 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "One-time financial incentive of about Rs 50,000-2,50,000 (source note gives a corrected figure of Rs 2.5 lakh for simple-marriage couples) for SC couples opting for a simple marriage ceremony; original scheme text states Rs 50,000.",
-  "caveats": "Only couples married on or after 11-08-2015 are eligible, and application must be made within 1 year of marriage.",
+  "benefit_summary": "Rs.50,000 marriage incentive for SC couples in Karnataka married on or after 11-08-2015.",
+  "caveats": "Only couples married on or after 11-08-2015 are eligible, and application must be made within 1 year of marriage. [Audit fix 2026-07-23] Removed an incorrect 'corrected to Rs.2.5 lakh' claim -- the official myscheme.gov.in page states a flat Rs.50,000 with no alternate figure. Rs.2,50,000 belongs to Karnataka's separate Inter-Caste Marriage Assistance scheme and was a conflation error.",
   "source_confidence": "verified",
   "extraction_confidence": "low",
   "extraction_flags": [
    "ambiguous_income_threshold",
-   "amount_conflicts_between_source_sections"
+   "amount_conflicts_between_source_sections",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "myscheme.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "igndps-sikkim",
@@ -9812,17 +9842,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Monthly old-age pension of Rs 1,000 (Rs 1,500/month with central IGNOAPS top-up at age 80+) via DBT, for men 60+ or women 55+ who are BPL or have income under Rs 75,000/year.",
-  "caveats": "Min age is 60 for men and 55 for women.",
+  "benefit_summary": "Monthly old-age pension via DBT for men 60+ or women 55+ who are BPL or have income under Rs 75,000/year: Rs 1,250/month for women aged 55-59, Rs 1,500/month for ages 60-79, Rs 2,000/month for ages 80+ (tiered structure effective 1 April 2025, up from a prior flat Rs 1,000).",
+  "caveats": "Min age is 60 for men and 55 for women. [Audit fix 2026-07-23] Updated from the stale flat-Rs.1,000 (with 80+-only Rs.1,500 top-up) structure to the tiered Rs.1,250/1,500/2,000 rates that took effect 1 April 2025 under a J&K govt order, confirmed by 5 independent J&K news sources.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "gendered_age_threshold"
+   "gendered_age_threshold",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "socialwelfarekashmir.jk.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "isss-pot",
@@ -9845,17 +9876,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Monthly pension of Rs 1,000 via DBT for transgender persons in J&K who are BPL or have income under Rs 75,000/year.",
-  "caveats": null,
+  "benefit_summary": "Monthly pension via DBT for transgender persons in J&K who are BPL or have income under Rs 75,000/year: Rs 1,250/month (below 60), Rs 1,500/month (60-79), Rs 2,000/month (80+) -- the same tiered structure applied to old-age/widow/disability pensions, effective 1 April 2025.",
+  "caveats": " [Audit fix 2026-07-23] Updated from a stale flat Rs.1,000/month to the tiered Rs.1,250/1,500/2,000 structure that the same April 2025 J&K order explicitly extended to the transgender pension.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "amount_inferred_from_parallel_component"
+   "amount_inferred_from_parallel_component",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "myscheme.gov.in/schemes/isss-pot"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "isss-ppcp",
@@ -9993,7 +10025,7 @@
   "min_age": 18,
   "max_age": 36,
   "gender": null,
-  "max_income": null,
+  "max_income": 15000,
   "ration_card_types": null,
   "occupation": [
    "private_job",
@@ -10008,14 +10040,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Monthly Industrial Skill Development Allowance of Rs 1,000 for new employees/apprentices in Himachal Pradesh industries during on-the-job skill training, up to 24 months; Rs 1,500/month for those with 50%+ permanent disability.",
-  "caveats": "Applicant must be registered with an Employment Exchange in Himachal Pradesh and currently unemployed/seeking employment; no minimum educational qualification required.",
+  "caveats": "Applicant must be registered with an Employment Exchange in Himachal Pradesh and currently unemployed/seeking employment; no minimum educational qualification required. [Audit fix 2026-07-23] Added missing max_income=Rs.15,000/month gross salary cap -- mandatory per clauses 3(j) and 4(f) of the official 2018 HP scheme rules; previously encoded as null (no cap enforced).",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "myscheme.gov.in/schemes/isdane"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "isds",
@@ -10457,14 +10491,15 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "In-kind school kit (3 uniform pairs, notebooks, textbooks, shoes, 2 pairs of socks, belt, school bag) for students in Class 1-10 at government/aided/residential/model schools and registered madrasas in Andhra Pradesh.",
-  "caveats": null,
+  "caveats": " [Audit fix 2026-07-23] Renamed to 'Sarvepalli Radhakrishnan Vidyarthi Mitra' (SRKVM) in mid-2024 under the TDP-led NDA government, as part of the same de-branding initiative that renamed sibling schemes jav and jvvd (already correctly flagged in this database). The scheme itself (in-kind school kit) continues under the new name.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "benefit_is_in_kind_not_cash"
+   "benefit_is_in_kind_not_cash",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "jvvd",
@@ -10894,8 +10929,8 @@
   "title": "Krishak Bandhu Scheme",
   "state": "West Bengal",
   "level": "state",
-  "min_age": 18,
-  "max_age": 60,
+  "min_age": null,
+  "max_age": null,
   "gender": null,
   "max_income": null,
   "ration_card_types": null,
@@ -10911,16 +10946,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Assured annual income support of Rs 10,000/acre/year (>=1 acre) or a minimum Rs 4,000/year (<1 acre), paid in two installments (Kharif and Rabi); plus a one-time death benefit of Rs 2,00,000 to legal heirs if a registered farmer/sharecropper aged 18-60 dies.",
-  "caveats": "Applicant must hold cultivable land with RoR/Patta/Forest Patta, or be a recorded Bhagchasi (sharecropper). Some secondary sources claim a higher Rs 2.5 lakh death benefit for accidental death, but this is NOT confirmed on the official page.",
+  "caveats": "The 18-60 age band applies ONLY to the separate one-time Rs.2,00,000 death benefit paid to a deceased registered farmer's heirs -- NOT to the main annual cultivation assistance (Rs.10,000/acre or minimum Rs.4,000/year), which has no age restriction and depends solely on land ownership/tenancy documentation. Applicant must hold cultivable land with RoR/Patta/Forest Patta, or be a recorded Bhagchasi (sharecropper). [Audit fix 2026-07-23] Removed min_age=18/max_age=60 from the main record -- those fields described the death-benefit component only and would have wrongly excluded landholding farmers under 18 or over 60 from the actual annual income-support payment.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "ambiguous_death_benefit_amount"
+   "ambiguous_death_benefit_amount",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "https://krishakbandhu.wb.gov.in/about_kb"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "kssugbocwwb",
@@ -11435,14 +11471,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Free universal eye screening for all Telangana citizens, with free spectacles, free cataract/glaucoma/retinopathy surgeries, and free medicines for common eye ailments.",
-  "caveats": null,
+  "caveats": "Not confirmed as an actively continued program under the Congress-led Telangana government (in power since Dec 2023) -- Telangana Today reported the government 'showing no signs of continuing' it, and it is absent from the state's official current initiatives list (telangana.gov.in/government-initiatives). Do not present as a confirmed active statewide benefit; advise users to confirm current status/camp schedules locally (PHC/district health office). [Audit fix 2026-07-23] Flagged as likely discontinued/uncertain rather than presenting as a confirmed active universal scheme, given a change of government and its absence from the current administration's initiatives list.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "indiaherald.com"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "lhadc",
@@ -11627,15 +11665,17 @@
   "worker_board_registration_required": true,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Rs.55,000 marriage assistance for a registered UP construction worker's daughter (Rs.61,000 for inter-caste marriage, Rs.65,000 per couple for mass/group marriages of 11+ couples), plus Rs.5,000 each for bride/groom attire in group marriages.",
-  "caveats": "Worker must have completed 365 days of board membership. Daughter must be 18+, groom 21+. Benefit capped at 2 daughters per worker. Application within 1 year of marriage (15 days before for mass marriage).",
+  "benefit_summary": "Rs.65,000 for a normal marriage, Rs.75,000 for an inter-caste marriage, Rs.85,000 per couple for mass/group marriages, plus a separate Rs.15,000 grant for event/arrangement costs -- for daughters (18+, groom 21+) of registered UP construction workers (365-day membership), capped at 2 daughters.",
+  "caveats": "Worker must have completed 365 days of board membership. Daughter must be 18+, groom 21+. Benefit capped at 2 daughters per worker. Application within 1 year of marriage (15 days before for mass marriage). [Audit fix 2026-07-23] Updated to the November 5, 2025 UP BOCW Welfare Board revision (Rs.65k/75k/85k/15k), which remained in effect through at least June 2026 -- the old Rs.55k/61k/65k/5k figures were stale.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "myscheme.gov.in/schemes/kvsy"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "lmmls",
@@ -11818,17 +11858,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Rs.2,750/month per family for Haryana families with only daughters (no sons), paid to a parent aged 45-60, for 15 years from the date either parent turns 45.",
-  "caveats": "After age 60 the benefit converts to the Old Age Samman Allowance Scheme. Family gross annual income must not exceed Rs.2,00,000.",
+  "benefit_summary": "Rs.3,000/month per family for Haryana families with only daughters (no sons), paid to a parent aged 45-60, for 15 years from the date either parent turns 45.",
+  "caveats": "After age 60 the benefit converts to the Old Age Samman Allowance Scheme. Family gross annual income must not exceed Rs.2,00,000. [Audit fix 2026-07-23] Rs.2,750/month was the 01.04.2023 rate; revised to Rs.3,000/month effective 1 January 2024 per socialjusticehry.gov.in.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "ambiguous_income_threshold"
+   "ambiguous_income_threshold",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "socialjusticehry.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "ltas",
@@ -11871,8 +11912,8 @@
   "title": "Loans for Tools (MBOCWWB)",
   "state": "Meghalaya",
   "level": "state",
-  "min_age": null,
-  "max_age": 55,
+  "min_age": 55,
+  "max_age": null,
   "gender": null,
   "max_income": null,
   "ration_card_types": null,
@@ -11888,16 +11929,17 @@
   "bank_account_required": true,
   "residency_required": true,
   "benefit_summary": "A loan of Rs.5,000 (one-time) for purchase of tools by registered Meghalaya construction workers, recovered in up to 60 monthly installments.",
-  "caveats": "CORRECTED note: this is a loan, not a grant. Requires 3 years of fund membership with regular contributions. Cannot resell tools purchased; no second grant allowed.",
+  "caveats": "CORRECTED note: this is a loan, not a grant. Requires 3 years of fund membership with regular contributions. Cannot resell tools purchased; no second grant allowed. [Audit fix 2026-07-23] Fixed backwards age field: this is a MINIMUM age of 55 (no maximum), not a max_age of 55. The MBOCWWB's own page phrase 'completed 55 years' denotes a floor, consistent with standard Indian government usage (confirmed by the same page's Pension Plan scheme using identical phrasing for its own 60-year minimum).",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "state_data_corrected"
+   "state_data_corrected",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "megbocwwb.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "maanbocwwb",
@@ -11955,18 +11997,19 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Cashless health insurance cover up to Rs.5 lakh per family per year for lower-income Gujarat families, covering hospitalization, surgery, cancer/kidney/cardiac treatment, and transportation.",
-  "caveats": "MERGED note: this scheme has merged with Mukhyamantri Amrutum Yojana into unified PMJAY-MA (launched 17 Oct 2024) combined with central Ayushman Bharat PM-JAY — recommend showing one entry for both maay and ma slugs. Applicant must not have existing health insurance; covers up to 5 members (7 for larger families).",
+  "benefit_summary": "Cashless health insurance cover up to Rs.10 lakh per family per year for lower-income Gujarat families, covering hospitalization, surgery, cancer/kidney/cardiac treatment, and transportation.",
+  "caveats": "MERGED note: this scheme has merged with Mukhyamantri Amrutum Yojana into unified PMJAY-MA (launched 17 Oct 2024) combined with central Ayushman Bharat PM-JAY — recommend showing one entry for both maay and ma slugs. Applicant must not have existing health insurance; covers up to 5 members (7 for larger families). [Audit fix 2026-07-23] Coverage doubled from Rs.5 lakh to Rs.10 lakh per family per year since the July 2023 Gujarat govt revamp, reinforced by the Oct 2024 unified PMJAY-MA card rollout; Rs.10 lakh remains current per Dec 2025 reporting.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
    "scheme_merged_with_another",
-   "ambiguous_income_threshold"
+   "ambiguous_income_threshold",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "https://ma.gujarat.gov.in/"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "lts",
@@ -12327,18 +12370,19 @@
   "worker_board_registration_required": true,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Monthly train/bus season ticket (commute pass) for unorganized workers in Chhattisgarh commuting up to 50km for daily travel.",
-  "caveats": "Not eligible if already receiving a similar benefit from another state scheme. Started 30.06.2023 (verification updates raw data's 150km figure to 50km). [Fix 2026-07-23] Occupation constraint removed from structured matching (originally \"unorganized_worker\", not a real FLOW value) -- worker_board_registration_required=True already carries the real gate.",
+  "benefit_summary": "Monthly train/bus season ticket (commute pass) for unorganized workers in Chhattisgarh commuting up to 150km for daily travel.",
+  "caveats": "Not eligible if already receiving a similar benefit from another state scheme. Started 19 June 2017 (not 30.06.2023). [Fix 2026-07-23] Occupation constraint removed from structured matching (originally \"unorganized_worker\", not a real FLOW value) -- worker_board_registration_required=True already carries the real gate. [Audit fix 2026-07-23] Reverted an incorrect prior 'correction' that changed 150km to 50km -- the live myScheme.gov.in page confirms 150km is correct; the 'fix' had introduced the error, and the start-date claim (30.06.2023) was also wrong (actual: 19 June 2017).",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
    "state_data_corrected",
-   "occupation_field_corrected_2026-07-23"
+   "occupation_field_corrected_2026-07-23",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "shramevjayate.cg.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "maky",
@@ -13417,18 +13461,19 @@
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "One-time Rs.25,000 marriage grant for one daughter (18+) of a Puducherry-registered ex-serviceman or widow of an ex-serviceman.",
-  "caveats": "Note: verification says confirmed amount is Rs.10,000, though Details/Benefits sections both state Rs.25,000 — used the Details/Benefits figure of Rs.25,000, flagging the discrepancy. Application must be sent within 3 months of marriage; benefit usable once.",
+  "benefit_summary": "One-time Rs.10,000 marriage grant for one daughter (18+) of a Puducherry-registered ex-serviceman or widow of an ex-serviceman, PBOR category, no income ceiling.",
+  "caveats": "Application must be sent within 3 months of marriage; benefit usable once. [Audit fix 2026-07-23] Resolved a self-acknowledged discrepancy: corrected from Rs.25,000 to Rs.10,000 per the official Puducherry Sainik Welfare Dept benefits list. The Rs.25,000 figure belongs to a separate, unrelated Women & Child Development scheme (GMAWD) that was mistakenly carried into this record.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
    "amount_discrepancy_note_vs_text",
-   "occupation_field_corrected_2026-07-23"
+   "occupation_field_corrected_2026-07-23",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "sainik.py.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mgtocpp",
@@ -13438,7 +13483,7 @@
   "min_age": 60,
   "max_age": null,
   "gender": null,
-  "max_income": 40000,
+  "max_income": 75000,
   "ration_card_types": null,
   "occupation": [
    "artisan"
@@ -13453,17 +13498,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Rs.2,000/month pension for artisans aged 60+ in Puducherry who have practiced their craft for at least 5 years; surviving spouse gets Rs.1,000/month after the artisan's death.",
-  "caveats": "Requires 5 years of Puducherry residency and craft practice. Subject to annual renewal. Not eligible if receiving similar assistance elsewhere.",
+  "benefit_summary": "Rs.5,000/month pension for artisans aged 60+ in Puducherry who have practiced their craft for at least 5 years; surviving spouse gets Rs.2,500/month after the artisan's death.",
+  "caveats": "Requires 5 years of Puducherry residency and craft practice. Subject to annual renewal. Not eligible if receiving similar assistance elsewhere. [Audit fix 2026-07-23] Corrected significant understatement: Rs.5,000/Rs.2,500 (not Rs.2,000/Rs.1,000), and income ceiling Rs.75,000/year (not Rs.40,000), per dic.py.gov.in.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "occupation_field_corrected_2026-07-23"
+   "occupation_field_corrected_2026-07-23",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "dic.py.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mgy",
@@ -13612,31 +13658,26 @@
   "max_income": null,
   "ration_card_types": null,
   "occupation": null,
-  "marital_status": [
-   "married"
-  ],
-  "caste_category": [
-   "sc",
-   "st",
-   "obc"
-  ],
+  "marital_status": null,
+  "caste_category": null,
   "disability_required": true,
   "disability_percent_min": 40,
   "land_ownership_required": null,
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Marriage incentive for a Maharashtra couple where one partner has a disability (40%+) and marries a non-disabled person: Rs.50,000 from the state government, plus an additional Rs.2,50,000 from the Dr. Babasaheb Ambedkar Foundation (total Rs.3,00,000) if one partner is SC/ST/VJ/NT/SBC.",
-  "caveats": "CORRECTED note: raw data had old tiered amounts (Rs.50,000 with sub-splits of Rs.25,000/20,000/4,500/500); the combined figure with SC/ST/VJ/NT/SBC eligibility is Rs.3,00,000 total. Groom must be 21+, bride 18+, first marriage, registered under Hindu Marriage Act or Special Marriage Act.",
+  "benefit_summary": "Marriage incentive for a Maharashtra couple where one or both partners have 40%+ disability (valid UDID/disability certificate): Rs.1,50,000 if one partner is disabled and marries a non-disabled person, Rs.2,50,000 if both partners are disabled (per a Government Resolution dated 18 December 2025).",
+  "caveats": "This scheme (run by the Persons with Disabilities Welfare Department) has NO caste requirement -- it was previously conflated with a separate SJSA inter-caste marriage incentive (Rs.50,000 state + Rs.2,50,000 Ambedkar Foundation, requiring one partner SC/ST/VJ/NT/SBC, no disability requirement), which is a distinct scheme. Administered by the District Disability Empowerment Officer; apply within one year of marriage registration. [Audit fix 2026-07-23] Fixed record conflating two distinct schemes -- this one (Matrimonial Incentives, disability-based, no caste requirement) had incorrectly inherited the caste-gated inter-caste marriage scheme's amount and eligibility logic. Updated to the correct Dec 2025 disability-based figures.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "state_data_corrected"
+   "state_data_corrected",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "https://sjsa.maharashtra.gov.in/en/scheme/incentive-given-to-encourage-inter-caste-marriages/"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mkuy",
@@ -13821,16 +13862,9 @@
   "min_age": null,
   "max_age": null,
   "gender": null,
-  "max_income": 100000,
-  "ration_card_types": [
-   "AAY",
-   "BPL"
-  ],
-  "occupation": [
-   "farmer",
-   "construction_worker",
-   "journalist"
-  ],
+  "max_income": null,
+  "ration_card_types": null,
+  "occupation": null,
   "marital_status": null,
   "caste_category": null,
   "disability_required": null,
@@ -13840,16 +13874,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Cashless health insurance covering hospitalization for 996 medical/surgical procedures across 34 specialties, now up to Rs.5 lakh/family/year (Rs.1.5 lakh base, Rs.2.5 lakh for renal transplants under older cap), available universally across Maharashtra since July 2024.",
-  "caveats": "Confirmed as part of the July 2026 Ayushman Bharat/MJPJAY integration audit — universal Maharashtra coverage since July 2024 at Rs.5 lakh/year cashless (supersedes older ration-card-based Category A/B/C eligibility tiers).",
+  "caveats": "Effective 1 July 2024, integrated with Ayushman Bharat-PMJAY and extended to cover ALL families in Maharashtra with no income limit, no ration-card requirement, and no occupation restriction (~2.72 crore families / ~12.5 crore people). The old structured tiers (max_income Rs.1 lakh, AAY/BPL ration cards, farmer/construction/journalist occupation) describe the scheme's PRE-2023/2024 restrictive eligibility, since superseded. [Audit fix 2026-07-23] Removed the stale restrictive structured fields (max_income/ration_card_types/occupation) that contradicted this record's own 'universal coverage' benefit_summary -- a matching bot using those fields as hard filters would have wrongly rejected otherwise-eligible Maharashtra residents.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "state_data_corrected"
+   "state_data_corrected",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "https://www.myscheme.gov.in/schemes/mjpjay"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mjpmsky",
@@ -13874,17 +13909,18 @@
   "worker_board_registration_required": true,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Benefit bundle for licensed Rajasthan mandi (market) workers: 45 days' wage maternity support, 15 days' wage paternity leave, Rs.50,000 marriage assistance (licensed woman or 2 daughters), merit scholarships (Rs.2,000-6,000), Rs.25,000 natural-death benefit, Rs.50,000 accidental-death benefit, Rs.2,000 maternity assistance, and Rs.500/year education scholarship for children in Class 1-8.",
-  "caveats": "CORRECTED note: raw data's flat Rs.50,000 figure was only the accidental-death benefit — natural death is Rs.25,000, and there are multiple other benefit tiers as listed above.",
+  "benefit_summary": "Benefit bundle for licensed Rajasthan mandi (market) workers: 45 days' wage maternity support, 15 days' wage paternity leave, Rs.75,000 marriage assistance (licensed woman or 2 daughters), merit scholarships (Rs.2,000-6,000), Rs.25,000 natural-death benefit, Rs.50,000 accidental-death benefit, Rs.2,000 maternity assistance, and Rs.500/year education scholarship for children in Class 1-8.",
+  "caveats": "CORRECTED note: raw data's flat Rs.50,000 figure was only the accidental-death benefit — natural death is Rs.25,000, and there are multiple other benefit tiers as listed above. [Audit fix 2026-07-23] Marriage assistance increased from Rs.50,000 to Rs.75,000 per daughter under the Rajasthan FY2025-26 budget (announced ~Feb 27, 2025), still capped at 2 daughters.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "state_data_corrected"
+   "state_data_corrected",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "sarasmilkfed.rajasthan.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mjpovnbcebcs",
@@ -13975,16 +14011,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Rs.4,000/year (two installments of Rs.2,000) state top-up for Madhya Pradesh farmers, added on top of the central PM-Kisan Rs.6,000/year, totaling Rs.10,000/year via DBT.",
-  "caveats": "Farmer must be registered under PM Kisan Samman Nidhi Yojana and own cultivable land. Excludes constitutional post-holders, legislators, government employees/pensioners (pension >=Rs.10,000/month), income-tax payers, and licensed professionals (doctors/engineers/lawyers/CAs/architects).",
+  "benefit_summary": "Rs.6,000/year (three installments of Rs.2,000) state top-up for Madhya Pradesh farmers, added on top of the central PM-Kisan Rs.6,000/year, totaling Rs.12,000/year via DBT.",
+  "caveats": "Farmer must be registered under PM Kisan Samman Nidhi Yojana and own cultivable land. Excludes constitutional post-holders, legislators, government employees/pensioners (pension >=Rs.10,000/month), income-tax payers, and licensed professionals (doctors/engineers/lawyers/CAs/architects). [Audit fix 2026-07-23] MP state top-up increased from Rs.4,000/year (2 installments) to Rs.6,000/year (3 installments) since FY2023-24, bringing the combined total with central PM-Kisan to Rs.12,000/year, not Rs.10,000/year.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "schemesinindia.in",
    "saara.mp.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mksy",
@@ -14030,9 +14068,7 @@
    "BPL"
   ],
   "occupation": null,
-  "marital_status": [
-   "widowed"
-  ],
+  "marital_status": null,
   "caste_category": null,
   "disability_required": null,
   "disability_percent_min": null,
@@ -14041,14 +14077,16 @@
   "bank_account_required": true,
   "residency_required": true,
   "benefit_summary": "Rs.40,000 marriage financial assistance for daughters of BPL families, widows, and destitute women in Himachal Pradesh.",
-  "caveats": "Family annual income must be below Rs.35,000.",
+  "caveats": "Covers unmarried daughters of BPL families (the primary beneficiary group), widows, destitute/orphan women, and divorced/deserted women -- NOT restricted to widows. Family annual income must be below Rs.35,000. [Audit fix 2026-07-23] Removed the incorrect marital_status=['widowed']-only restriction, which would have wrongly excluded unmarried BPL daughters (the scheme's main beneficiary group) and divorced/deserted women -- our schema has no clean way to encode this broad multi-category eligibility, so the constraint has been dropped rather than mis-gated.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "edistrict.hp.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mmkyu",
@@ -14118,7 +14156,7 @@
   "min_age": null,
   "max_age": null,
   "gender": null,
-  "max_income": null,
+  "max_income": 400000,
   "ration_card_types": null,
   "occupation": null,
   "marital_status": null,
@@ -14130,14 +14168,16 @@
   "bank_account_required": true,
   "residency_required": true,
   "benefit_summary": "Rs.3,000/month financial assistance for economically weaker Himachal Pradesh patients with Parkinson's disease, cancer, paralysis, muscular dystrophy, hemophilia, thalassemia, or chronic renal failure; Rs.1,500/month for HIV/AIDS patients.",
-  "caveats": "Not eligible if already receiving another government pension scheme.",
+  "caveats": "Not eligible if already receiving another government pension scheme. [Audit fix 2026-07-23] Added missing max_income=Rs.4,00,000/year -- a hard, independent eligibility gate for this scheme regardless of qualifying disease status; was previously null (no cap enforced).",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "egovtschemes.com"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mmy",
@@ -14486,15 +14526,17 @@
   "worker_board_registration_required": true,
   "bank_account_required": true,
   "residency_required": true,
-  "benefit_summary": "Rs.1,500/month pension for Chhattisgarh construction workers aged 60+, registered for 10+ years; surviving spouse gets Rs.750/month family pension after the beneficiary's death.",
-  "caveats": "Not eligible if already availing the Chief Minister Syan Sahayata Yojana or another parallel scheme. Must submit an annual survival certificate in March. Apply within 6 months of turning 59 years 3 months to 60 years.",
+  "benefit_summary": "Rs.1,500/month pension for Chhattisgarh construction workers aged 60+, registered for 10+ years; surviving spouse gets Rs.700/month family pension after the beneficiary's death.",
+  "caveats": "Not eligible if already availing the Chief Minister Syan Sahayata Yojana or another parallel scheme. Must submit an annual survival certificate in March. Apply within 6 months of turning 59 years 3 months to 60 years. [Audit fix 2026-07-23] Widow/family pension corrected from Rs.750/month to Rs.700/month per the official myscheme.gov.in scheme page; Rs.750 was an unsupported figure that spread across secondary aggregators only.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "shramevjayate.cg.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mnssy",
@@ -15049,7 +15091,7 @@
   "min_age": 18,
   "max_age": 45,
   "gender": null,
-  "max_income": null,
+  "max_income": 1200000,
   "ration_card_types": null,
   "occupation": [
    "self_employed",
@@ -15068,17 +15110,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Margin money assistance for self-employment/business projects: 15% of project cost (max Rs.1,00,000) for general category, 30% (max Rs.2,00,000) for BPL/SC/ST/OBC/women/minority/disabled, plus interest subsidy (5% p.a., 6% for women) for up to 7 years.",
-  "caveats": "CORRECTED per verification note: reportedly merged into 'Mukhyamantri Udyam Kranti Yojana'. Loan range is Rs.50,000 to Rs.10,00,000, not a flat Rs.2,00,000. Applicant must have passed 5th class, not be an income taxpayer, and not be a loan defaulter.",
+  "benefit_summary": "Under Mukhyamantri Udyam Kranti Yojana (MUKY), the scheme MMSY was merged into via a Nov 2021 gazette notification: collateral-free loan of Rs.1,00,000 to Rs.50,00,000 (service-sector loans capped lower at up to Rs.25 lakh per some sources) with a flat 3% p.a. interest subsidy for up to 7 years, plus a CGTMSE credit-guarantee-fee subsidy.",
+  "caveats": "MMSY (along with Mukhyamantri Yuva Udyami Yojana and Mukhyamantri Krishak Udyami Yojana) was merged into Mukhyamantri Udyam Kranti Yojana (MUKY) via a gazette notification dated 29 Nov 2021 -- this record now reflects MUKY's current terms. Applicant age 18-40, minimum 12th pass (not 5th class), family income cap Rs.12 lakh/year. [Audit fix 2026-07-23] Corrected a record that (even after an internal 'correction') still described defunct standalone-MMSY terms nearly 5 years out of date. Updated to MUKY's actual current terms: age 18-40, 12th pass minimum, Rs.12 lakh income cap, Rs.1L-50L loan at flat 3% p.a. subsidy.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "scheme_possibly_merged_renamed"
+   "scheme_possibly_merged_renamed",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "khargone.nic.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mtyyd",
@@ -15247,8 +15290,7 @@
   "max_income": null,
   "ration_card_types": null,
   "occupation": [
-   "construction_worker",
-   "daily_wage"
+   "private_job"
   ],
   "marital_status": null,
   "caste_category": null,
@@ -15259,14 +15301,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "One-time lump sum of Rs.7,500 for postgraduate students to help buy books, for daughters of registered construction/labour workers in Uttar Pradesh.",
-  "caveats": "Worker's monthly salary (basic + DA) must not exceed Rs.15,000; worker must have completed at least 6 months of continuous service at a registered establishment/factory. Benefit limited to two daughters per worker. If both parents are workers, only one can claim. A woman worker herself is also eligible.",
+  "caveats": "Worker's monthly salary (basic + DA) must not exceed Rs.15,000; worker must have completed at least 6 months of continuous service at a registered establishment/factory. Benefit limited to two daughters per worker. If both parents are workers, only one can claim. A woman worker herself is also eligible. Eligible worker category is specifically employees registered under the Shops and Establishments Act 1962 or the Factories Act 1948 (shop/commercial establishment or factory workers) -- a distinct registration category from Building & Other Construction Workers (BOCW) board registration. [Audit fix 2026-07-23] Corrected occupation tag from ['construction_worker','daily_wage'] to ['private_job'] (closest existing broad category) -- this scheme is for Shops/Establishments Act or Factories Act registered workers specifically, not construction/BOCW workers, per multiple independent sources.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "skpuplabour.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mvspy",
@@ -15290,15 +15334,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Monthly old-age pension of Rs.1,000 for Rajasthan residents: women 55+, men 58+, with a couple's annual income under Rs.48,000 (income condition waived for BPL/Antyodaya/Aastha card holders and certain Sahariya/Kathauri/Khairwa caste members).",
-  "caveats": "Verification note flags this scheme has likely been effectively merged into the consolidated RAJSSP pension scheme, with the amount possibly folded into current age-tiered rates rather than a standalone flat Rs.1,000 - treat the exact current amount with caution.",
+  "caveats": "Verification note flags this scheme has likely been effectively merged into the consolidated RAJSSP pension scheme, with the amount possibly folded into current age-tiered rates rather than a standalone flat Rs.1,000 - treat the exact current amount with caution. [Audit fix 2026-07-23] Rajasthan's RAJSSP old-age pension baseline has been hiked in stages to Rs.1,450/month (Budget 2026-27) via Rs.1,150 (2024) -> Rs.1,250 (2025) -> Rs.1,300 (Jan 2026) -> Rs.1,450 (2026-27); the flat Rs.1,000 figure was stale.",
   "source_confidence": "verified",
   "extraction_confidence": "low",
   "extraction_flags": [
    "scheme_possibly_merged_renamed",
-   "amount_uncertain"
+   "amount_uncertain",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mvyspy",
@@ -15319,16 +15364,17 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Monthly disability pension for Rajasthan residents with 40%+ disability (or dwarfism, eunuchism, cured leprosy/silicosis), family income under Rs.60,000/year: Rs.1,000/month (under 75 years), Rs.1,250/month (75+), Rs.2,500/month (leprosy-free patients), Rs.1,500/month (silicosis patients).",
-  "caveats": "Verification note indicates this scheme has been folded into the CMSASPS tiered structure (Rs.750-1,000/month, age-tiered) - the standalone amounts above may no longer be current.",
+  "benefit_summary": "Monthly disability pension for Rajasthan residents with 40%+ disability (or dwarfism, eunuchism, cured leprosy/silicosis), family income under Rs.60,000/year: baseline Rs.1,450/month (current RAJSSP rate as of Budget 2026-27, up from a Rs.1,000/1,250 base), with historically higher special tiers for leprosy-free (Rs.2,500) and silicosis (Rs.1,500) patients whose current status after the baseline hike is not independently confirmed.",
+  "caveats": "Verification note indicates this scheme has been folded into the CMSASPS tiered structure (Rs.750-1,000/month, age-tiered) - the standalone amounts above may no longer be current. [Audit fix 2026-07-23] Updated baseline from Rs.1,000/1,250 toward the current RAJSSP-wide Rs.1,450 rate (per multiple sources including govtschemes.in's RAJSSP overview), while flagging that the special leprosy-free/silicosis tiers' post-hike status is less certain -- no primary Rajasthan government order could be directly retrieved to confirm those specific tiers moved in lockstep.",
   "source_confidence": "verified",
   "extraction_confidence": "low",
   "extraction_flags": [
    "scheme_possibly_merged_renamed",
-   "amount_uncertain"
+   "amount_uncertain",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "mwfhjwy",
@@ -15938,16 +15984,17 @@
   "bank_account_required": null,
   "residency_required": false,
   "benefit_summary": "Fellowship for OBC students pursuing M.Phil./Ph.D.: JRF Rs.37,000/month for first 2 years, SRF Rs.42,000/month thereafter (rates revised Jan 2023), 1,000 slots per year, plus annual contingency allowance.",
-  "caveats": "Applicant must have qualified UGC NET-JRF (Humanities/Social Sciences) or UGC-CSIR NET-JRF (Science). These 1,000 slots are over and above the normal OBC reservation quota for UGC Fellowships. Verification note flags this as a PhD/M.Phil fellowship of low relevance to typical welfare-eligibility queries.",
+  "caveats": "Applicant must have qualified UGC NET-JRF (Humanities/Social Sciences) or UGC-CSIR NET-JRF (Science). These 1,000 slots are over and above the normal OBC reservation quota for UGC Fellowships. Verification note flags this as a PhD/M.Phil fellowship of low relevance to typical welfare-eligibility queries. IMPORTANT: New candidate selections have been effectively frozen since the June 2024 cycle -- NBCFDC has not obtained Ministry clearance to finalize selection lists for three consecutive cycles (June 2024, Dec 2024, June 2025), citing insufficient scheme funds per an RTI response (July 2025). Previously-selected scholars continue receiving stipends (~2-month delay), but a new applicant should NOT expect imminent selection as of the most recent available reporting (through Nov 2025). [Audit fix 2026-07-23] Added a caveat flagging that new selections are frozen, so the bot doesn't imply a prospective applicant will imminently receive this fellowship.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "low_relevance_advanced_research_fellowship"
+   "low_relevance_advanced_research_fellowship",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "socialjustice.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "ngaossandvtd",
@@ -16615,17 +16662,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Monthly old-age pension currently Rs.1,000 for West Bengal residents aged 60+ (55+ for physically/mentally disabled) with no family member able to support them financially and personal income under Rs.1,000/month, not already receiving another government pension.",
-  "caveats": "IN FLUX per verification note: as of July 2026, a pension increase (to Rs.1,500 or Rs.2,000, per competing proposals from the outgoing and incoming state governments after the May 2026 change of government) has been announced but NOT formally notified - Rs.1,000/month is the figure currently being disbursed; do not hard-code a higher amount yet. Disabled applicants require 10 years state residency (relaxable in hardship cases). Pensions administered via the Jai Bangla portal since April 2020.",
+  "benefit_summary": "Monthly old-age pension currently Rs.1,500 for West Bengal residents aged 60+ (55+ for physically/mentally disabled) with no family member able to support them financially and personal income under Rs.1,500/month, not already receiving another government pension.",
+  "caveats": "Formally notified: West Bengal's Panchayat Affairs & Rural Development Dept enhanced Old Age/Widow/Disability Pension from Rs.1,000 to Rs.1,500/month around 20 July 2026, retroactive to 1 April 2026, with DBT of the higher amount beginning 1 August 2026. [Audit fix 2026-07-23] Updated from 'announced but not notified, still Rs.1,000' to the now-formally-notified Rs.1,500/month -- the notification (~20 July 2026) postdates this record's prior last_checked date of 2026-07-15 by about 5 days.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "amount_in_flux_pending_notification"
+   "amount_in_flux_pending_notification",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "https://jaibangla.wb.gov.in"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "oap",
@@ -16768,7 +16816,7 @@
   "min_age": 60,
   "max_age": null,
   "gender": null,
-  "max_income": 200000,
+  "max_income": 300000,
   "ration_card_types": null,
   "occupation": null,
   "marital_status": null,
@@ -16780,16 +16828,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Monthly old-age pension of Rs.3,200 (raised effective November 2025 from Rs.3,000) for Haryana residents aged 60+, whose combined income with their spouse does not exceed Rs.2,00,000/year, disbursed through Panchayati Raj Institutions.",
-  "caveats": "CORRECTED per verification note: current amount is Rs.3,200/month effective Nov 2025, higher than the Rs.2,500 figure in the original scheme text.",
+  "caveats": "CORRECTED per verification note: current amount is Rs.3,200/month effective Nov 2025, higher than the Rs.2,500 figure in the original scheme text. [Audit fix 2026-07-23] Income ceiling corrected from Rs.2,00,000 to Rs.3,00,000/year (combined with spouse) -- raised via a Haryana govt notification dated 05.04.2023, confirmed on socialjusticehry.gov.in and sewa.haryana.gov.in.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "amount_corrected_by_verification_note"
+   "amount_corrected_by_verification_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "haryana.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "obcpms",
@@ -16880,18 +16929,19 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Educational assistance for Other Eligible Communities (OEC) students in Kerala studying classes 1-10: current tiered amounts (per verification note) are Rs.750/900/1,000 per year for govt/aided school students (lower primary/upper primary/high school) and Rs.1,333/2,000 per year for unaided school students - higher than the originally listed Rs.320-940 figures.",
-  "caveats": "CORRECTED per verification note: original Rs.320-940 figures are stale/too low; current tiered amounts are higher (see benefit summary). No income limit for OEC-community students; a Rs.6,00,000/year income limit applies only to students from 'Other Equivalent Communities'.",
+  "benefit_summary": "Rs.320/year (Class I-IV), Rs.630/year (Class V-VII), Rs.940/year (Class VIII-X) -- flat per-year amounts, same for government/aided and unaided schools.",
+  "caveats": " [Audit fix 2026-07-23] Reverted an incorrect prior 'verification correction' that inflated these to Rs.750/900/1,000 and Rs.1,333/2,000 -- those higher figures belong to an unrelated national ST pre-matric scholarship. The original Rs.320/630/940 figures are correct per egovtschemes.com and bcdd.kerala.gov.in.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
    "amount_corrected_by_verification_note",
-   "tiered_benefit_amount"
+   "tiered_benefit_amount",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "bcdd.kerala.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "oms",
@@ -17525,18 +17575,19 @@
   "worker_board_registration_required": null,
   "bank_account_required": true,
   "residency_required": false,
-  "benefit_summary": "Housing support for urban households across income slabs (EWS up to Rs.3L/year, LIG Rs.3-6L, MIG-1 Rs.6-9L, MIG-2/ISS up to Rs.18L, per PMAY-U 2.0), via interest subsidy of 4% p.a. on the first Rs.8 lakh of a home loan over a 12-year tenure, capped at Rs.1.80 lakh total paid in 5 annual installments of Rs.36,000, plus slum rehabilitation and beneficiary-led construction subsidies for EWS households.",
-  "caveats": "CORRECTED per verification note: PMAY-U 2.0 income slabs and interest subsidy terms are as stated above, updated from the original PMAY (Housing for All by 2022) figures. Applicant/family must not already own a pucca house anywhere in India, must not have availed any other government housing scheme, and must have an Aadhaar/Aadhaar Virtual ID. Family defined as husband/wife and unmarried children. Track application status via the CLAP portal.",
+  "benefit_summary": "Housing support for urban households across income slabs (EWS up to Rs.3L/year, LIG Rs.3-6L, MIG-1 Rs.6-9L, per PMAY-U 2.0), via interest subsidy of 4% p.a. on the first Rs.8 lakh of a home loan over a 12-year tenure, capped at Rs.1.80 lakh total paid in 5 annual installments of Rs.36,000, plus slum rehabilitation and beneficiary-led construction subsidies for EWS households.",
+  "caveats": "CORRECTED per verification note: PMAY-U 2.0 income slabs and interest subsidy terms are as stated above, updated from the original PMAY (Housing for All by 2022) figures. Applicant/family must not already own a pucca house anywhere in India, must not have availed any other government housing scheme, and must have an Aadhaar/Aadhaar Virtual ID. Family defined as husband/wife and unmarried children. Track application status via the CLAP portal. [Audit fix 2026-07-23] Removed a false fourth 'MIG-2/ISS up to Rs.18L' income tier -- the current PMAY-U 2.0 Interest Subsidy Scheme has only THREE tiers (EWS/LIG/MIG), all within a Rs.9 lakh/year ceiling. A MIG-II tier (Rs.12-18L) existed only under the older, discontinued PMAY 1.0 CLSS-MIG with a different subsidy structure -- it doesn't carry over into the current scheme.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
    "amount_corrected_by_verification_note",
-   "income_threshold_varies_by_tier"
+   "income_threshold_varies_by_tier",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "pmay-urban.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pmbjp",
@@ -17710,15 +17761,10 @@
   "max_age": null,
   "gender": "female",
   "max_income": 800000,
-  "ration_card_types": [
-   "BPL"
-  ],
+  "ration_card_types": null,
   "occupation": null,
   "marital_status": null,
-  "caste_category": [
-   "sc",
-   "st"
-  ],
+  "caste_category": null,
   "disability_required": null,
   "disability_percent_min": null,
   "land_ownership_required": null,
@@ -17726,17 +17772,18 @@
   "bank_account_required": true,
   "residency_required": false,
   "benefit_summary": "Cash maternity benefit of Rs.5,000 for the first living child (in two installments: Rs.3,000 on pregnancy registration + ANC checkup, Rs.2,000 on child birth registration and immunization), PLUS (corrected/updated per PMMVY 2.0, effective 1 April 2022) Rs.6,000 in one installment for a second child if it is a girl - up to Rs.11,000 total across two children.",
-  "caveats": "CORRECTED per verification note: the second-child girl-child benefit of Rs.6,000 (added under PMMVY 2.0) should be included alongside the original Rs.5,000 first-child benefit. Applicant must be at least 19, employed and experiencing wage loss due to pregnancy, and apply within 270 days of childbirth. Eligible disadvantaged categories include SC/ST women, 40%+ disabled women, BPL cardholders, PMJAY/e-Shram/PM-Kisan/MGNREGA/NFSA cardholders, and women with family income under Rs.8 lakh/year. Miscarriage/stillbirth cases are treated as fresh cases in future pregnancies.",
+  "caveats": "CORRECTED per verification note: the second-child girl-child benefit of Rs.6,000 (added under PMMVY 2.0) should be included alongside the original Rs.5,000 first-child benefit. Applicant must be at least 19, employed and experiencing wage loss due to pregnancy, and apply within 270 days of childbirth. Eligible disadvantaged categories include SC/ST women, 40%+ disabled women, BPL cardholders, PMJAY/e-Shram/PM-Kisan/MGNREGA/NFSA cardholders, and women with family income under Rs.8 lakh/year. Miscarriage/stillbirth cases are treated as fresh cases in future pregnancies. IMPORTANT: eligibility is met by satisfying ANY ONE of ~11 alternative criteria (SC/ST/BPL/40%+disabled/PMJAY/e-Shram/MGNREGA/PM-Kisan/AWW-AWH-ASHA/NFSA card/family income <Rs.8 lakh), not all combined. The max_income=800000 field already captures the standalone income-based path -- caste_category and ration_card_types have been removed as hard gates since they are just two of many alternative (OR) qualifying routes, not required (AND) conditions. [Audit fix 2026-07-23] Removed incorrect caste_category=[sc,st] and ration_card_types=[BPL] hard gates that (combined with max_income) misrepresented this OR-based, alternative-criteria scheme as an AND-based combined requirement -- would have wrongly rejected general-category, non-BPL applicants with income under Rs.8 lakh who are in fact eligible via the income path alone.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "amount_corrected_by_verification_note"
+   "amount_corrected_by_verification_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "myscheme.gov.in",
    "wcd.delhi.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pmmy",
@@ -17925,9 +17972,7 @@
   "occupation": [
    "student"
   ],
-  "marital_status": [
-   "widowed"
-  ],
+  "marital_status": null,
   "caste_category": null,
   "disability_required": null,
   "disability_percent_min": null,
@@ -17936,12 +17981,14 @@
   "bank_account_required": null,
   "residency_required": false,
   "benefit_summary": "Scholarship of Rs.2,500/month (boys) or Rs.3,000/month (girls) for dependent wards/widows of ex-servicemen or ex-Coast Guard personnel, admitted to the 1st year of a professional/technical course with 60%+ in their qualifying exam, paid annually for 1-5 years depending on course duration.",
-  "caveats": "5,500 scholarships (2,750 boys + 2,750 girls) awarded per academic year, with priority given first to wards/widows of personnel killed in action, then disabled in action, then died in service, etc.",
+  "caveats": "5,500 scholarships (2,750 boys + 2,750 girls) awarded per academic year, with priority given first to wards/widows of personnel killed in action, then disabled in action, then died in service, etc. Covers both 'ward' (unmarried son/daughter, the majority of beneficiaries -- male ward eligible up to 25yo, female ward eligible only until she marries) and 'widow' (of an ex-servicemen, no age limit until she remarries) applicant categories -- NOT restricted to widows. [Audit fix 2026-07-23] Removed the incorrect marital_status=['widowed']-only restriction, which would have wrongly excluded unmarried son/daughter 'ward' applicants who form the bulk of this scheme's beneficiaries.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pmssc",
@@ -18130,15 +18177,17 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": false,
-  "benefit_summary": "Scholarship for SC students in Class 9-10: Rs.225/month (day scholars) or Rs.525/month (hostellers) for 10 months/year, plus a books/ad-hoc grant of Rs.750/year (day scholars) or Rs.1,000/year (hostellers), with additional monthly allowances (Rs.160-240) for students with disabilities.",
-  "caveats": "Family income must not exceed Rs.2,50,000/year. Only for regular, full-time students at a government/recognized school. Scholarship for any given class is available for only one year; confirmed separate from the PM-YASASVI scheme.",
+  "benefit_summary": "Consolidated academic allowance (effective 2022-23, still current): Rs.3,500/year for day scholars, Rs.7,000/year for hostellers -- replacing the old monthly stipend (Rs.225/525) plus separate ad-hoc/books grant (Rs.750/1,000) structure.",
+  "caveats": "Family income must not exceed Rs.2,50,000/year. Only for regular, full-time students at a government/recognized school. Scholarship for any given class is available for only one year; confirmed separate from the PM-YASASVI scheme. [Audit fix 2026-07-23] Updated to the 2022-23 consolidated-allowance figures (Rs.3,500/7,000 per year), which also represent a modest real increase over the old structure's totals (Rs.3,000/6,250/year), per socialjustice.gov.in.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "socialjustice.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pre-st",
@@ -18270,16 +18319,17 @@
   "bank_account_required": null,
   "residency_required": false,
   "benefit_summary": "Scholarship of Rs.1,250/month (boys) or Rs.1,500/month (girls) - per verification note, actually confirmed at Rs.2,500/month (boys) and Rs.3,000/month (girls) - for wards/widows of Central Police Force (CPF) personnel pursuing a first professional degree (engineering, medicine, dental, MBA, etc.), paid for 2-5 years depending on course.",
-  "caveats": "Requires 60% marks at 10+2 for initial sanction, 50% each year for renewal. About 5,500 scholarships awarded per year (910 for CPFs under MHA, 90 for RPF under Railways, remainder shared with the parallel ex-servicemen scheme). Priority order: killed in action > disabled in action > gallantry awardees > died in harness > disabled in service > others.",
+  "caveats": "Requires 60% marks at 10+2 for initial sanction, 50% each year for renewal. About 5,500 scholarships awarded per year (910 for CPFs under MHA, 90 for RPF under Railways, remainder shared with the parallel ex-servicemen scheme). Priority order: killed in action > disabled in action > gallantry awardees > died in harness > disabled in service > others. [Audit fix 2026-07-23] Corrected to the current rate (Rs.2,500 boys/Rs.3,000 girls, in effect since FY2019-20) -- the Rs.1,250/1,500 figures were outdated and had been listed first/leading despite a parenthetical self-correction elsewhere in the same text.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "amount_conflicts_with_verification_note"
+   "amount_conflicts_with_verification_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "desw.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pmsvs-maharashtra",
@@ -18289,7 +18339,7 @@
   "min_age": null,
   "max_age": null,
   "gender": null,
-  "max_income": 250000,
+  "max_income": 150000,
   "ration_card_types": null,
   "occupation": [
    "student"
@@ -18303,16 +18353,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "100% tuition fee, exam fee, and maintenance allowance for VJNT (Vimukta Jatis & Nomadic Tribes) category students in Maharashtra pursuing post-matric education, with maintenance allowance ranging Rs.90-190/month (day scholars) to Rs.150-425/month (hostellers), varying by course group.",
-  "caveats": "CORRECTED per verification note: parent/guardian income ceiling is Rs.2,50,000/year (source eligibility text stated Rs.1,50,000, which appears outdated). Max 2 boys per family eligible (unlimited girls). Requires 75% attendance; scholarship discontinues if the student changes from professional to non-professional course, or repeats a failed year without promotion.",
+  "caveats": "CORRECTED per verification note: parent/guardian income ceiling is Rs.2,50,000/year (source eligibility text stated Rs.1,50,000, which appears outdated). Max 2 boys per family eligible (unlimited girls). Requires 75% attendance; scholarship discontinues if the student changes from professional to non-professional course, or repeats a failed year without promotion. [Audit fix 2026-07-23] Reverted an incorrect prior 'correction' that raised the VJNT income ceiling from Rs.1,50,000 to Rs.2,50,000 -- Rs.2,50,000 belongs to the separate SC/ST post-matric scholarship category; VJNT/OBC/SBC schemes remain capped at Rs.1.5 lakh per the official myScheme.gov.in portal.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "amount_corrected_by_verification_note"
+   "amount_corrected_by_verification_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "https://www.buddy4study.com/scholarship/post-matric-scholarship-to-vjnt-students-maharashtra"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pmuy",
@@ -18339,18 +18390,19 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": false,
-  "benefit_summary": "Free, deposit-free LPG connection for poor women without an existing LPG connection: Rs.1,600 (14.2kg cylinder) or Rs.1,150 (5kg cylinder), plus a free first refill and free stove; ongoing refill subsidy capped at Rs.300/refill for up to 9 refills/year (Cabinet-approved for FY2025-26).",
-  "caveats": "CORRECTED per verification note: refill subsidy cap is 9 refills/year, NOT 4/year as a previous verification pass incorrectly recorded - that earlier '9 to 4' correction was itself wrong and has been reverted to 9. Eligible categories: SECC 2011 list, SC/ST households, PMAY/AAY beneficiaries, forest dwellers, MBC, tea garden tribes, river island residents, or self-declared poor households via a 14-point declaration. Priority to states with lower LPG coverage than the national average as of 1 Jan 2016.",
+  "benefit_summary": "Free, deposit-free LPG connection for poor women without an existing LPG connection: Rs.1,600 (14.2kg cylinder) or Rs.1,150 (5kg cylinder), plus a free first refill and free stove; ongoing refill subsidy capped at Rs.300/refill for up to 4 refills/year (cut from 9, effective 8 June 2026, capping the annual benefit at Rs.1,200).",
+  "caveats": "Eligible categories: SECC 2011 list, SC/ST households, PMAY/AAY beneficiaries, forest dwellers, and other notified categories. [Audit fix 2026-07-23] Corrected a false internal 'verification note' claiming a 4-refill correction was wrong and had been 'reverted to 9' -- the Union Government actually DID cut the subsidized refill quota from 9 to 4 cylinders/year effective 8 June 2026 (due to a ~46% rise in global LPG prices), and no reversal back to 9 was found. This record's caveats field should be treated as having contained fabricated/incorrect correction history, not a genuine one.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "amount_corrected_by_verification_note"
+   "amount_corrected_by_verification_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "pmindia.gov.in",
    "ddnews.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pmuy2",
@@ -18376,17 +18428,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": false,
-  "benefit_summary": "Free, deposit-free LPG connection (Rs.1,600 for 14.2kg cylinder or Rs.1,150 for 5kg, covering security deposit, regulator, hose, consumer card and installation charges) plus a free first refill and stove, for poor women without an existing LPG connection in the household - includes special provisions for migrant families.",
-  "caveats": "Same refill-subsidy correction as the original PMUY per verification note: cap is 9 refills/year, not 4. Eligible categories: SC/ST, PMAY-Gramin, AAY, Most Backward Classes, tea garden tribes, forest dwellers, island residents, SECC households, or 14-point self-declared poor households. Applicant must be 18+ with no other LPG connection in the household.",
+  "benefit_summary": "Free, deposit-free LPG connection (Rs.1,600 for 14.2kg cylinder or Rs.1,150 for 5kg, covering security deposit, regulator, hose, consumer card and installation charges) plus a free first refill and stove; ongoing refill subsidy capped at Rs.300/refill for up to 4 refills/year (cut from 9, effective 8 June 2026, capping the annual benefit at Rs.1,200), for poor women without an existing LPG connection in the household - includes special provisions for migrant families.",
+  "caveats": "Eligible categories: SC/ST, PMAY-Gramin, AAY, Most Backward Classes, tea garden tribes, forest dwellers, island residents, SECC households, or 14-point self-declared poor households. [Audit fix 2026-07-23] Same fix as base PMUY: corrected the false '9, not 4' verification note -- the government cut the subsidized refill quota to 4/year effective 8 June 2026, applying uniformly to PMUY 2.0 beneficiaries too.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "amount_corrected_by_verification_note"
+   "amount_corrected_by_verification_note",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "pmindia.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "ppmbocwwb",
@@ -19165,7 +19218,7 @@
   "sources": [
    "rajasthansarkar.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Rajasthan",
   "min_age": null,
   "max_age": null,
@@ -19184,10 +19237,12 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Subsidized food grains under Targeted PDS: Antyodaya families get 35kg wheat/month at Rs.1/kg; Priority Households get 5kg/person/month at Rs.2/kg.",
-  "caveats": "Requires ration card under Antyodaya/BPL/Annapurna/Priority Household category.",
+  "benefit_summary": "Subsidized food grains under Targeted PDS: Antyodaya families get 35kg wheat/month at free of cost (Rs.0/kg,; Priority Households get 5kg/person/month at was Rs.2/kg, now free).",
+  "caveats": "Requires ration card under Antyodaya/BPL/Annapurna/Priority Household category. Since 1 Jan 2023, all NFSA foodgrain (AAY and Priority Household categories) is FREE OF COST nationwide (extended through Dec 2028 by a Nov 2023 Cabinet decision) -- the old Rs.1/kg (AAY)/Rs.2/kg (PHH) charges no longer apply. Quantities (35kg/month AAY, 5kg/person/month PHH) are unchanged. [Audit fix 2026-07-23] Updated to reflect free foodgrain (since Jan 2023) -- the Rs.1/kg and Rs.2/kg figures were pre-2023 NFSA central issue prices, discontinued nationwide.",
   "extraction_confidence": "high",
-  "extraction_flags": []
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ]
  },
  {
   "scheme_id": "rkvyshfshc",
@@ -19291,10 +19346,10 @@
   "sources": [
    "nitiforstates.gov.in"
   ],
-  "last_checked": "2026-07-17",
+  "last_checked": "2026-07-23",
   "state": "Jammu And Kashmir",
   "min_age": 18,
-  "max_age": 40,
+  "max_age": 35,
   "gender": null,
   "max_income": null,
   "ration_card_types": null,
@@ -19311,9 +19366,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Financial assistance up to Rs.20 lakh per youth group (min. Rs.2.5 lakh or 10% project cost subsidy + up to Rs.17.5 lakh bank loan) to establish community-oriented enterprises in J&K.",
-  "caveats": "Youth groups need minimum 3 members, all aged 18-40 with 12th-standard qualification (relaxable case-by-case); none of the group can have availed a similar self-employment scheme before; group members must not be loan defaulters.",
+  "caveats": "Youth groups need minimum 3 members, all aged 18-40 with 12th-standard qualification (relaxable case-by-case); none of the group can have availed a similar self-employment scheme before; group members must not be loan defaulters. [Audit fix 2026-07-23] Corrected max_age from 40 to 35 per the official Mission Youth J&K scheme guidelines (missionyouth.jk.gov.in), which cap youth-group membership at 18-35, not 18-40.",
   "extraction_confidence": "high",
-  "extraction_flags": []
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ]
  },
  {
   "scheme_id": "rythu-bima",
@@ -19323,10 +19380,10 @@
   "sources": [
    "siasat.com"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Telangana",
   "min_age": 18,
-  "max_age": 60,
+  "max_age": 59,
   "gender": null,
   "max_income": null,
   "ration_card_types": null,
@@ -19337,14 +19394,16 @@
   "caste_category": null,
   "disability_required": null,
   "disability_percent_min": null,
-  "land_ownership_required": null,
+  "land_ownership_required": true,
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Rs.5 lakh life/accident insurance payout to families of registered farmers (including tenant farmers) in Telangana who die or are permanently disabled; premium Rs.1,200/year (govt pays Rs.900, farmer pays Rs.300).",
-  "caveats": "Distinct from the separate 'Rythu Bharosa' input-support scheme (Rs.12,000/acre/year) which replaced 'Rythu Bandhu' -- do not conflate the two.",
+  "caveats": "Distinct from the separate 'Rythu Bharosa' input-support scheme (Rs.12,000/acre/year) which replaced 'Rythu Bandhu' -- do not conflate the two. Age eligibility is 18-59, not 18-60. As part of the 2025-2026 renewal, new applications are restricted to farmers owning up to 5 acres of land, registered in the Bhu Bharati/CCLA land-records portals (our schema can't encode the 5-acre cap specifically, only land ownership generally). [Audit fix 2026-07-23] Corrected max_age from 60 to 59, and added land_ownership_required=True to reflect a newly-added 2025-26 land-ownership restriction that was previously not captured at all (field was null).",
   "extraction_confidence": "high",
-  "extraction_flags": []
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ]
  },
  {
   "scheme_id": "s-esdp",
@@ -19518,9 +19577,9 @@
   "sources": [
    "pmujjwalayojana.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Rajasthan",
-  "min_age": null,
+  "min_age": 18,
   "max_age": null,
   "gender": "female",
   "max_income": null,
@@ -19539,9 +19598,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "One-time financial assistance of Rs.55,000 to unmarried daughters (max 2/family) of registered construction worker families in Rajasthan, or to an unmarried female beneficiary, for education, vocational training, business, or marriage expenses.",
-  "caveats": "Parent must be registered as construction worker for at least 1 year and have worked 90+ days in the preceding year; daughter must have passed 8th standard and have her own savings account; house (if owned) must have a toilet; requires physical verification.",
+  "caveats": "Parent must be registered as construction worker for at least 1 year and have worked 90+ days in the preceding year; daughter must have passed 8th standard and have her own savings account; house (if owned) must have a toilet; requires physical verification. [Audit fix 2026-07-23] Added missing min_age=18 for the daughter-beneficiary -- was previously null, which could let an underage applicant appear eligible.",
   "extraction_confidence": "high",
-  "extraction_flags": []
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ]
  },
  {
   "scheme_id": "sasstsap",
@@ -19618,12 +19679,12 @@
    "egovtschemes.com",
    "adcl.karnataka.gov.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Karnataka",
   "min_age": 21,
-  "max_age": null,
+  "max_age": 50,
   "gender": null,
-  "max_income": null,
+  "max_income": 500000,
   "ration_card_types": null,
   "occupation": [
    "self_employed",
@@ -19640,10 +19701,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Initial capital subsidy up to Rs.10 lakh plus training/mentorship for SC entrepreneurs in Karnataka to set up franchise/dealership retail businesses, targeting 25,000 entrepreneurs over 3 years.",
-  "caveats": "Applicant must have passed SSLC; selection is merit-based via district-level screening and franchisor approval.",
+  "caveats": "Applicant must have passed SSLC; selection is merit-based via district-level screening and franchisor approval. [Audit fix 2026-07-23] Added missing max_age=50 and max_income=Rs.5,00,000/year per the Dr. B.R. Ambedkar Development Corporation's official Samruddhi Scheme criteria -- both were previously null, which would have wrongly told over-50 or higher-income applicants they qualify.",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "occupation_not_standard"
+   "occupation_not_standard",
+   "audit_fixed_2026-07-23"
   ]
  },
  {
@@ -19972,12 +20034,12 @@
   "sources": [
    "himachal.nic.in"
   ],
-  "last_checked": "2026-07-17",
+  "last_checked": "2026-07-23",
   "state": "Himachal Pradesh",
-  "min_age": 18,
+  "min_age": 16,
   "max_age": 35,
   "gender": null,
-  "max_income": null,
+  "max_income": 200000,
   "ration_card_types": null,
   "occupation": [
    "unemployed"
@@ -19991,10 +20053,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Rs.1,000/month general skill-development allowance; Rs.1,500/month for those with 50%+ permanent disability, for HP youth during training.",
-  "caveats": "Eligibility criteria (age, domicile, education, income, employment status) may vary case by case per available text.",
+  "caveats": "Eligibility criteria (age, domicile, education, income, employment status) may vary case by case per available text. [Audit fix 2026-07-23] Corrected min_age from 18 to 16 (official floor is 'above 16, below 36') and added missing max_income=Rs.2,00,000/year (family income including spouse) -- both per the official 2013 HP scheme rules; the income cap was previously null/unenforced.",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "vague_eligibility_text"
+   "vague_eligibility_text",
+   "audit_fixed_2026-07-23"
   ]
  },
  {
@@ -20261,12 +20324,12 @@
   "sources": [
    "myscheme.gov.in/schemes/ses-goa"
   ],
-  "last_checked": "2026-07-17",
+  "last_checked": "2026-07-23",
   "state": "Goa",
   "min_age": null,
   "max_age": 55,
   "gender": null,
-  "max_income": 100000,
+  "max_income": 300000,
   "ration_card_types": null,
   "occupation": null,
   "marital_status": null,
@@ -20279,10 +20342,12 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Loan/financial support up to Rs.20 lakh (including 50% interest-free share capital, up to Rs.16 lakh for ST) for self-employment ventures by Scheduled Tribe individuals/groups in Goa; ~75% interest rebate on remaining loan portion.",
-  "caveats": "Requires 10% margin money contribution (may be relaxed for individuals, not for groups/companies) and two guarantors (one must be a government servant).",
+  "benefit_summary": "Loan up to Rs.10 lakh for an individual unemployed ST person, or up to Rs.15 lakh for an Association/Society/Partnership/SHG/Company of ST members, at a flat 4% interest per annum, repayable over up to 10 years. No interest-free share capital or interest rebate component.",
+  "caveats": "Requires 10% margin money contribution (may be relaxed for individuals, not for groups/companies) and two guarantors (one must be a government servant). [Audit fix 2026-07-23] Corrected outdated benefit description (removed a nonexistent '50% interest-free share capital'/'75% interest rebate' structure) and raised max_income from Rs.1,00,000 to Rs.3,00,000/year, per the current official GSSTFDCL scheme PDF.",
   "extraction_confidence": "high",
-  "extraction_flags": []
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ]
  },
  {
   "scheme_id": "ses",
@@ -20292,7 +20357,7 @@
   "sources": [
    "kmdc.karnataka.gov.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Karnataka",
   "min_age": 18,
   "max_age": 55,
@@ -20311,10 +20376,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "33% subsidy of unit cost (max Rs.1 lakh) via bank loan for religious minority community members (Muslim, Christian, Sikh, Buddhist, Jain) in Karnataka to start small-scale handicraft/service/agro-based businesses.",
-  "caveats": "Family income cap Rs.81,000/year (rural) or Rs.1,03,000/year (urban). No family member may be a State/Central/PSU employee. Disabled applicants get reduced 5% self-contribution vs standard.",
+  "caveats": "Family income cap Rs.6,00,000/year (flat, no rural/urban distinction). No family member may be a State/Central/PSU employee. Disabled applicants get reduced 5% self-contribution vs standard. [Audit fix 2026-07-23] Replaced a stale rural/urban income-cap caveat (Rs.81,000/Rs.1,03,000/year) with the current flat Rs.6,00,000/year cap confirmed by direct fetch of the official KMDC page -- the old split figure now appears only on outdated third-party aggregators.",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "income_threshold_varies_rural_urban"
+   "income_threshold_varies_rural_urban",
+   "audit_fixed_2026-07-23"
   ]
  },
  {
@@ -20961,14 +21027,15 @@
   "sources": [
    "poonch.nic.in"
   ],
-  "last_checked": "2026-07-17",
+  "last_checked": "2026-07-23",
   "state": "Jammu And Kashmir",
   "min_age": 18,
   "max_age": null,
   "gender": "female",
   "max_income": null,
   "ration_card_types": [
-   "AAY"
+   "AAY",
+   "BPL"
   ],
   "occupation": null,
   "marital_status": null,
@@ -20979,11 +21046,12 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "CORRECTED: current restructured benefit is Rs.25,000 + 5 grams gold one-time marriage assistance (not the Rs.50,000 in the original scraped text) for poor girls from AAY/PHH ration card families in J&K.",
-  "caveats": "Must apply at least 1 month before marriage; minimum qualification 8th pass (special guidelines for dropouts FY2022-23 to FY2024-25); cannot combine with other schemes like Ladli Beti Scheme; one-time only.",
+  "benefit_summary": "One-time cash marriage assistance via DBT, paid before marriage: Rs.75,000 for AAY ration-card-holder families, Rs.50,000 for PHH ration-card-holder families (effective 1 April 2025; no gold component).",
+  "caveats": "Must apply at least 1 month before marriage; minimum qualification 8th pass (special guidelines for dropouts FY2022-23 to FY2024-25); cannot combine with other schemes like Ladli Beti Scheme; one-time only. [Audit fix 2026-07-23] Updated from a stale 'Rs.25,000 + 5g gold' figure to the current tiered cash-only structure (Rs.75,000 AAY / Rs.50,000 PHH) effective 1 April 2025, and added PHH to ration_card_types (previously AAY-only) -- both per confirmed 2025-26 J&K budget reporting. Note: PHH is modeled here via the closest existing value 'BPL' since our schema doesn't have a distinct PHH ration-card type.",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "occupation_not_standard"
+   "occupation_not_standard",
+   "audit_fixed_2026-07-23"
   ]
  },
  {
@@ -21337,12 +21405,12 @@
   "level": "state",
   "source_confidence": "verified",
   "sources": [],
-  "last_checked": "2026-07-15",
+  "last_checked": "2026-07-23",
   "state": "Gujarat",
   "min_age": null,
   "max_age": null,
   "gender": null,
-  "max_income": null,
+  "max_income": 600000,
   "ration_card_types": null,
   "occupation": null,
   "marital_status": null,
@@ -21356,10 +21424,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Rs.5,000 funeral expense assistance for Scheduled Caste families in Gujarat upon the death of a family member.",
-  "caveats": "Must apply within 6 months of death with death registration certificate; only one person per family can claim per death.",
+  "caveats": "Must apply within 6 months of death with death registration certificate; only one person per family can claim per death. Income ceiling per the official Gujarat SJE page: Rs.6,00,000/year overall (the same page also separately lists Rs.47,000/year rural / Rs.68,000/year urban -- an internal inconsistency in the source itself; we use the higher, more inclusive Rs.6,00,000 figure so eligible lower-income and mid-income applicants aren't wrongly turned away). [Audit fix 2026-07-23] Added missing max_income (was null) -- the official Gujarat source lists an income eligibility condition (either Rs.6,00,000 flat or a Rs.47,000/68,000 rural/urban split on the same page); used the higher, more inclusive figure given the source's own internal inconsistency.",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "ambiguous_income_threshold"
+   "ambiguous_income_threshold",
+   "audit_fixed_2026-07-23"
   ]
  },
  {
@@ -21371,7 +21440,7 @@
    "nskfdc.nic.in",
    "socialjustice.gov.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "central",
   "min_age": null,
   "max_age": null,
@@ -21388,11 +21457,12 @@
   "bank_account_required": null,
   "residency_required": false,
   "benefit_summary": "CORRECTED (revised w.e.f. 1.4.2021): one-time cash assistance of Rs.40,000 plus upfront capital subsidy up to Rs.5 lakh and concessional loans (up to Rs.15 lakh project cost) for identified manual scavengers and dependents to pursue alternative self-employment; skill training stipend Rs.3,000/month for up to 2 years; health insurance cover Rs.5 lakh under AB-PMJAY.",
-  "caveats": "Applicant must be identified/surveyed as a manual scavenger with an MS-ID. Manual scavenging is NOT eradicated in India (still illegal but persists) -- do not present this as a solved/banned issue. [Fix 2026-07-23] Occupation constraint removed from structured matching -- this is specifically for rehabilitated manual scavengers, a status our FLOW does not capture.",
+  "caveats": "Applicant must be identified/surveyed as a manual scavenger with an MS-ID. Manual scavenging is NOT eradicated in India (still illegal but persists) -- do not present this as a solved/banned issue. [Fix 2026-07-23] Occupation constraint removed from structured matching -- this is specifically for rehabilitated manual scavengers, a status our FLOW does not capture. IMPORTANT: SRMS has been discontinued as a standalone scheme -- its components (health insurance, skill training, capital subsidy) were subsumed into NAMASTE (National Action for Mechanised Sanitation Ecosystem), launched July 2023, jointly run by the Ministry of Social Justice & Empowerment and Ministry of Housing & Urban Affairs. A citizen applying today would be routed through NAMASTE, not a freestanding SRMS application. [Audit fix 2026-07-23] Flagged SRMS as superseded/subsumed into NAMASTE rather than presenting it as a currently active standalone scheme with its own live benefit track.",
   "extraction_confidence": "high",
   "extraction_flags": [
    "occupation_not_standard",
-   "occupation_field_corrected_2026-07-23"
+   "occupation_field_corrected_2026-07-23",
+   "audit_fixed_2026-07-23"
   ]
  },
  {
@@ -21656,7 +21726,7 @@
   "sources": [
    "kancheepuram.nic.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Tamil Nadu",
   "min_age": null,
   "max_age": null,
@@ -21674,10 +21744,12 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Tiered scholarship (Rs.1,000-7,000 depending on standard, from Class 1 through postgraduate/professional courses) for children of differently-abled persons in Tamil Nadu holding a disability welfare board ID.",
-  "caveats": "Parent must hold an identity card issued by the TN welfare board for the Differently Abled.",
+  "benefit_summary": "Scholarship for children (son/daughter) of differently-abled parents in Tamil Nadu, from having passed Class 10 / studying Class 11 onward through postgraduate/professional/ITI/polytechnic courses: Rs.1,000 (10th pass, 11th std) rising to Rs.1,500 (12th), Rs.1,500-1,750 (UG), Rs.2,000-3,000 (PG), Rs.2,000-4,000 (professional degree), Rs.4,000-6,000 (professional PG), Rs.1,000-1,200 (ITI/Polytechnic) -- higher figures include hostel.",
+  "caveats": "Parent must hold an identity card issued by the TN welfare board for the Differently Abled. [Audit fix 2026-07-23] Corrected: this scholarship covers Class 11 onward (student must have passed Class 10), NOT Class 1 -- the original benefit_summary's 'Class 1 through PG' framing and tier amounts had been mixed up with a different, similarly-named scheme for disabled students themselves.",
   "extraction_confidence": "high",
-  "extraction_flags": []
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ]
  },
  {
   "scheme_id": "ssds-punjab",
@@ -22112,7 +22184,7 @@
   "sources": [
    "sjd.kerala.gov.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Kerala",
   "min_age": null,
   "max_age": 55,
@@ -22134,9 +22206,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Free electric auto-rickshaw (in-kind, no cash) for widowed/divorced/abandoned BPL mothers of persons with disabilities (National Trust Act categories) in Kerala, to provide a livelihood (2 beneficiaries/district initially).",
-  "caveats": "Beneficiary must hold a valid 3-wheeler license; must bear tax/insurance costs; vehicle registered solely in beneficiary's name and cannot be transferred/sold.",
+  "caveats": "Beneficiary must hold a valid 3-wheeler license; must bear tax/insurance costs; vehicle registered solely in beneficiary's name and cannot be transferred/sold. Also covers women abandoned by their husband (a third eligible category alongside widowed/divorced per the official Kerala Social Justice Dept page) -- our marital_status field has no 'abandoned' option, so this may be missed; an abandoned-but-still-legally-married woman may need to self-report as 'married' in the bot and would be incorrectly excluded. [Audit fix 2026-07-23] Flagged a schema gap: eligibility also covers 'abandoned by husband' women, a category our FLOW's marital_status options (single/married/widowed/divorced) can't represent.",
   "extraction_confidence": "high",
-  "extraction_flags": []
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ]
  },
  {
   "scheme_id": "sspftdp",
@@ -22435,33 +22509,32 @@
   "title": "Sant Surdas Scheme",
   "state": "Gujarat",
   "level": "state",
-  "min_age": 0,
-  "max_age": 17,
+  "min_age": null,
+  "max_age": null,
   "gender": null,
   "max_income": null,
-  "ration_card_types": [
-   "BPL"
-  ],
+  "ration_card_types": null,
   "occupation": null,
   "marital_status": null,
   "caste_category": null,
   "disability_required": true,
-  "disability_percent_min": 80,
+  "disability_percent_min": 60,
   "land_ownership_required": null,
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Monthly financial assistance of Rs.1,000 via DBT for disabled children aged 0-17 with 80%+ disability from BPL families.",
-  "caveats": "Assistance stops at age 18. Verification note flags eligibility may have expanded to 50%+ disability per a 2026 CMO announcement - recheck age/disability threshold before publishing.",
+  "caveats": "Per the FY2025-26 Gujarat state budget, extended from 80%+ disability to 60%+ disability, and the earlier 0-17 age cap and BPL card requirement were both removed -- now open to disabled persons of any age with 60%+ disability regardless of BPL status. [Audit fix 2026-07-23] Updated per the FY2025-26 budget revision: disability threshold lowered from 80% to 60%, and the age cap (0-17) and BPL requirement were both removed.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "eligibility_uncertain_recent_change"
+   "eligibility_uncertain_recent_change",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "https://cmogujarat.gov.in/"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "ssstss",
@@ -22984,15 +23057,16 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Bank loan up to Rs.8 lakh/sector with subsidy of 25-40% (rural) or 20-30% (urban) depending on category; sector-wise subsidy caps: Industries Rs.1,25,000, Service Rs.1,00,000, Business Rs.60,000-80,000 (disabled persons capped at Rs.1,25,000 in any sector).",
-  "caveats": "Requires min. 4th standard pass plus relevant training/experience, or hereditary craftsperson status. No income criteria. SC/ST/ex-servicemen/women/40%+ disabled get higher subsidy rates.",
+  "benefit_summary": "Bank loan up to Rs.25 lakh/sector (raised from Rs.8 lakh) with subsidy of 25-40% (rural) or 20-30% (urban) depending on category, now capped at Rs.3,75,000 (General category) or Rs.5,00,000 (SC/ST/Divyang/Women/Ex-servicemen) -- raised from the old Rs.1,25,000 cap, effective FY2025-26 under Gujarat's Cottage and Village Industries Policy 2024.",
+  "caveats": "Requires min. 4th standard pass plus relevant training/experience, or hereditary craftsperson status. No income criteria. SC/ST/ex-servicemen/women/40%+ disabled get higher subsidy rates. [Audit fix 2026-07-23] Updated loan/subsidy caps to the FY2025-26 revision (GRs dated May-June 2025): max loan Rs.25 lakh (from Rs.8 lakh), max subsidy Rs.3.75 lakh General / Rs.5 lakh SC-ST-Divyang (from Rs.1.25 lakh).",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "income_not_a_criterion"
+   "income_not_a_criterion",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "svmcms",
@@ -23330,26 +23404,24 @@
    "student"
   ],
   "marital_status": null,
-  "caste_category": [
-   "sc",
-   "st",
-   "obc"
-  ],
+  "caste_category": null,
   "disability_required": null,
   "disability_percent_min": null,
   "land_ownership_required": null,
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Monthly scholarship of Rs.250 for SC/ST/OBC ITI trainees in Himachal Pradesh.",
-  "caveats": "Scholarship reduced correspondingly if trainee receives a stipend from elsewhere. Requires 80%+ attendance.",
+  "benefit_summary": "Monthly scholarship for ITI trainees in Himachal Pradesh, open to all categories: Rs.250/month for SC/ST/OBC trainees, Rs.100/month for General category trainees.",
+  "caveats": "Scholarship reduced correspondingly if trainee receives a stipend from elsewhere. Requires 80%+ attendance. [Audit fix 2026-07-23] Removed incorrect caste_category=[sc,st,obc] restriction -- this scheme is open to ALL categories, just at a lower Rs.100/month rate for General-category trainees (vs Rs.250 for SC/ST/OBC). Was wrongly excluding General-category ITI trainees entirely.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "egovtschemes.com"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "thasp",
@@ -23389,9 +23461,7 @@
   "max_age": null,
   "gender": "female",
   "max_income": null,
-  "ration_card_types": [
-   "BPL"
-  ],
+  "ration_card_types": null,
   "occupation": null,
   "marital_status": null,
   "caste_category": null,
@@ -23402,16 +23472,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Free institutional delivery services (normal, complicated, caesarean, forceps) at registered private/government hospitals for BPL pregnant women, cashless from admission to discharge.",
-  "caveats": "Geographically limited to 7 backward districts (Gulbarga, Bidar, Raichur, Koppal, Bijapur, Bagalkot, Chamarajanagar) - NOT available statewide. Benefit limited to first two deliveries.",
+  "caveats": "Geographically limited to 7 backward districts (Gulbarga, Bidar, Raichur, Koppal, Bijapur, Bagalkot, Chamarajanagar) - NOT available statewide. Benefit limited to first two deliveries. Eligibility is BPL ration card OR Scheduled Caste/Scheduled Tribe category (separate, alternative qualifying paths, not a combined requirement) -- our schema can't express this OR condition, so the BPL hard-gate has been removed to avoid wrongly excluding SC/ST women without a BPL card. [Audit fix 2026-07-23] Removed the ration_card_types=[BPL] hard gate since eligibility is actually BPL OR SC/ST (an alternative, not combined, requirement our AND-only matching engine can't represent) -- was wrongly excluding SC/ST pregnant women without a BPL card.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "geographically_limited_within_state"
+   "geographically_limited_within_state",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "myscheme.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "thcsgbocwwb",
@@ -23671,7 +23742,7 @@
  },
  {
   "scheme_id": "tncmbs",
-  "title": "Chief Minister Breakfast Scheme",
+  "title": "Perunthalaivar Kamarajar Breakfast Scheme (formerly Chief Minister Breakfast Scheme)",
   "state": "Tamil Nadu",
   "level": "state",
   "min_age": null,
@@ -23691,15 +23762,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Free daily breakfast (13 rotating menu items) for students in Classes 1-5 at Tamil Nadu government schools, Monday-Friday.",
-  "caveats": "No application needed - automatically provided at school. Expansion to classes 6-8 announced for 17 Sept 2026 but NOT yet active as of July 2026.",
+  "caveats": "No application needed - automatically provided at school. Expansion to classes 6-8 announced for 17 Sept 2026 but NOT yet active as of July 2026. [Audit fix 2026-07-23] Renamed to 'Perunthalaivar Kamarajar Breakfast Scheme' via G.O. (Ms) No. 20 dated 15 July 2026 -- underlying benefit (free daily breakfast, Classes 1-5) unchanged; retained the old name in the title for searchability.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [
    "tnsocialwelfare.tn.gov.in",
    "aninews.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "trsps",
@@ -24852,17 +24925,18 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Annual scholarship of Rs.750 for unmarried girls in classes 8-12 (K1), plus a one-time grant of Rs.25,000 at age 18-19 if still unmarried (K2, requires separate Form K2 application).",
-  "caveats": "Income ceiling is Rs.1,20,000/year (not the Rs.2.5 lakh used for other WB schemes). Waived for orphans, 40%+ disabled girls, and juvenile justice home residents.",
+  "benefit_summary": "Annual scholarship of Rs.1,000 for unmarried girls in classes 8-12 (K1), plus a one-time grant of Rs.25,000 at age 18-19 if still unmarried (K2, requires separate Form K2 application).",
+  "caveats": "Income ceiling is Rs.1,20,000/year (not the Rs.2.5 lakh used for other WB schemes). Waived for orphans, 40%+ disabled girls, and juvenile justice home residents. [Audit fix 2026-07-23] K1 annual scholarship corrected from Rs.750/year to Rs.1,000/year (current rate since the 2018-19 Kanyashree financial year) -- confirmed via Wikipedia and three West Bengal district government sites. K2's Rs.25,000 one-time grant is unaffected.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "income_threshold_differs_from_other_wb_schemes"
+   "income_threshold_differs_from_other_wb_schemes",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [
    "https://www.wbkanyashree.gov.in/kp_scheme.php"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "wbrupashree",
@@ -25152,7 +25226,7 @@
  },
  {
   "scheme_id": "ysrnn",
-  "title": "YSR Nethanna Nestham",
+  "title": "Nethanna Bharosa (formerly YSR Nethanna Nestham)",
   "state": "Andhra Pradesh",
   "level": "state",
   "min_age": null,
@@ -25173,15 +25247,16 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Rs.24,000/year financial assistance to every BPL handloom-weaving family that owns a handloom, to help modernize equipment.",
-  "caveats": "One benefit per weaver family regardless of number of looms owned. Must be registered with the Handloom Association and present in the departmental database - beneficiaries need not apply separately.",
+  "benefit_summary": "Rs.25,000/year cash assistance per eligible weaver family (~1.43 lakh families), plus 200 free electricity units/month (handloom) or 500 units/month (powerloom), 5% GST reimbursement, weavers' thrift fund, and new market-linkage initiatives -- since the August 2025 rollout of 'Nethanna Bharosa', succeeding the earlier YSR Nethanna Nestham (Rs.24,000/year).",
+  "caveats": "One benefit per weaver family regardless of number of looms owned. Must be registered with the Handloom Association and present in the departmental database - beneficiaries need not apply separately. [Audit fix 2026-07-23] Renamed/updated: as of National Handloom Day (7 August 2025), the AP government replaced YSR Nethanna Nestham (Rs.24,000/year) with Nethanna Bharosa (Rs.25,000/year plus added electricity/GST/thrift-fund benefits).",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "occupation_field_corrected_2026-07-23"
+   "occupation_field_corrected_2026-07-23",
+   "audit_fixed_2026-07-23"
   ],
   "sources": [],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "ysrpk",
@@ -25256,7 +25331,7 @@
  },
  {
   "scheme_id": "ysrvm",
-  "title": "YSR Vahana Mitra",
+  "title": "Auto Driver Sevalo (formerly YSR Vahana Mitra / AP Vahana Mitra)",
   "state": "Andhra Pradesh",
   "level": "state",
   "min_age": null,
@@ -25276,13 +25351,15 @@
   "worker_board_registration_required": null,
   "bank_account_required": null,
   "residency_required": true,
-  "benefit_summary": "Annual financial assistance (renamed 'AP Vahana Mitra') of Rs.15,000 (increased from Rs.10,000) for self-owned auto-rickshaw/taxi/maxi-cab driver-owners, for insurance/fitness/repair expenses.",
-  "caveats": "One benefit per family. Excludes government employees/pensioners, GSTN holders, income-tax payers, families with >3 acres wet/10 acres dry land, >1000 sq.ft. municipal property, or >300 units/month electricity.",
+  "benefit_summary": "Annual financial assistance (renamed 'Auto Driver Sevalo' via G.O. Ms. No. 33, ~13 Sept 2025) of Rs.15,000 (increased from Rs.10,000) for self-owned auto-rickshaw/taxi/maxi-cab driver-owners, for insurance/fitness/repair expenses.",
+  "caveats": "One benefit per family. Excludes government employees/pensioners, GSTN holders, income-tax payers, families with >3 acres wet/10 acres dry land, >1000 sq.ft. municipal property, or >300 units/month electricity. [Audit fix 2026-07-23] Updated rename chain: the scheme was renamed again in 2025 to 'Auto Driver Sevalo' (not 'AP Vahana Mitra', which was itself an earlier rename) -- the Rs.15,000/year benefit amount is unchanged and correct.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "audit_fixed_2026-07-23"
+  ],
   "sources": [],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "gruha-jyothi",
