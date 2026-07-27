@@ -1,7 +1,9 @@
 import os
+import re
 import json
-from flask import Flask, request
+from flask import Flask, request, abort
 from twilio.twiml.messaging_response import MessagingResponse
+from twilio.request_validator import RequestValidator
 
 app = Flask(__name__)
 
@@ -53,6 +55,22 @@ class SessionStore:
                 pass
         return sender in _memory_sessions
 
+    def get(self, sender, default=None):
+        # Single round-trip, no KeyError — used instead of the
+        # `if sender not in sessions: ... ; session = sessions[sender]`
+        # pattern, which does two separate Redis calls and can raise if the
+        # key expires (24h TTL) or gets deleted by a concurrent/duplicate
+        # webhook retry in the gap between them.
+        if _redis_client:
+            try:
+                raw = _redis_client.get(f"session:{sender}")
+                if raw is not None:
+                    return json.loads(raw)
+            except redis.exceptions.RedisError:
+                pass
+            return default
+        return _memory_sessions.get(sender, default)
+
     def __delitem__(self, sender):
         if _redis_client:
             try:
@@ -66,6 +84,21 @@ sessions = SessionStore()
 ELIGIBILITY_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "schemes_eligibility.json")
 with open(ELIGIBILITY_PATH, encoding="utf-8") as f:
     SCHEMES = json.load(f)
+
+# _scheme_matches() indexes every one of these fields directly (scheme["x"],
+# not scheme.get("x")) for every request. Validating once at boot — and
+# failing loudly here — is much better than a malformed record silently
+# breaking match() for every user on the next deploy.
+_REQUIRED_SCHEME_KEYS = {
+    'scheme_id','title','state','min_age','max_age','gender','max_income',
+    'ration_card_types','occupation','marital_status','caste_category',
+    'disability_required','disability_percent_min','land_ownership_required',
+    'worker_board_registration_required','bank_account_required','benefit_summary',
+}
+for _s in SCHEMES:
+    _missing = _REQUIRED_SCHEME_KEYS - _s.keys()
+    if _missing:
+        raise RuntimeError(f"schemes_eligibility.json record {_s.get('scheme_id','?')!r} is missing required fields: {_missing}")
 
 # Gujarati (gu), Bengali (bn), Tamil (ta), Telugu (te), Kannada (kn),
 # Malayalam (ml), Odia (or), Assamese (as), and Punjabi (pa) translations
@@ -361,7 +394,7 @@ MAHARASHTRA_SCHEMES = [
         # women/transgender/unmarried women 35+, age 18-65, income <=21,000
         # or on the BPL list. Rate raised to Rs.1,500/month via DBT from Dec
         # 2024 (older sources still say Rs.600).
-        "match": lambda p, age, inc: (p.get("marital") in ["3","4"] or p.get("occupation")=="5") and inc<=21000,
+        "match": lambda p, age, inc: 18<=age<=65 and (p.get("marital") in ["3","4"] or p.get("occupation")=="5" or p.get("disability") in ["2","3","4","5"] or (p.get("marital")=="1" and age>=35)) and (inc<=21000 or p.get("ration") in ["1","2"]),
         "link": "sjsa.maharashtra.gov.in",
         "text": {
             "1":("Sanjay Gandhi Niradhar Yojana","Rs.1,500/month via direct bank transfer. Covers destitute, disabled, seriously ill, widowed, divorced, abandoned or unmarried (35+) people — not just widows. Apply via mahadbt.maharashtra.gov.in"),
@@ -557,8 +590,83 @@ def q(step, lang):
     key = {"2":"mr","3":"hi","4":"gu","5":"bn","6":"ta","7":"te","8":"kn","9":"ml","10":"or","11":"as","12":"pa"}.get(lang,"en")
     return step.get(key,"")
 
+# A matched-schemes count in the double digits routinely produces a
+# 10,000-40,000 character message — WhatsApp's freeform-message limit is
+# 1,024 characters and Twilio's own hard cap is 1,600 (error 21617) — so
+# sending the full list in one msg.body() call was silently guaranteed to
+# fail for virtually every real user. Results are paginated instead: each
+# page stays under a total-message target, and any reply while schemes
+# remain just requests the next page (session["pending"] holds the rest).
+#
+# The entries budget is deliberately smaller than the total target: the
+# footer (RESULTS_CLOSING or CONTINUE_MSG, appended AFTER the entry loop)
+# isn't counted while accumulating entries, so its worst-case length must
+# be reserved upfront or a page could still slip past the total target.
+RESULTS_TOTAL_TARGET = 950  # keep real margin under WhatsApp's 1,024-char hard limit
+_FOOTER_RESERVE = 160       # >= the longest RESULTS_CLOSING/CONTINUE_MSG string in any language
+RESULTS_CHAR_BUDGET = RESULTS_TOTAL_TARGET - _FOOTER_RESERVE
+
+RESULTS_HEADER = {"1":"You qualify for {n} schemes!\n\n","2":"तुम्ही {n} योजनांसाठी पात्र आहात!\n\n","3":"आप {n} योजनाओं के लिए पात्र हैं!\n\n","4":"તમે {n} યોજનાઓ માટે પાત્ર છો!\n\n","5":"আপনি {n}টি প্রকল্পের জন্য যোগ্য!\n\n","6":"நீங்கள் {n} திட்டங்களுக்கு தகுதியுடையவர்!\n\n","7":"మీరు {n} పథకాలకు అర్హులు!\n\n","8":"ನೀವು {n} ಯೋಜನೆಗಳಿಗೆ ಅರ್ಹರಾಗಿದ್ದೀರಿ!\n\n","9":"നിങ്ങൾ {n} പദ്ധതികൾക്ക് അർഹരാണ്!\n\n","10":"ଆପଣ {n} ଯୋଜନା ପାଇଁ ଯୋଗ୍ୟ!\n\n","11":"আপুনি {n}টা আঁচনিৰ বাবে যোগ্য!\n\n","12":"ਤੁਸੀਂ {n} ਯੋਜਨਾਵਾਂ ਲਈ ਯੋਗ ਹੋ!\n\n"}
+
+MORE_HEADER = {"1":"More schemes:\n\n","2":"आणखी योजना:\n\n","3":"और योजनाएं:\n\n","4":"વધુ યોજનાઓ:\n\n","5":"আরও প্রকল্প:\n\n","6":"மேலும் திட்டங்கள்:\n\n","7":"మరిన్ని పథకాలు:\n\n","8":"ಇನ್ನಷ್ಟು ಯೋಜನೆಗಳು:\n\n","9":"കൂടുതൽ പദ്ധതികൾ:\n\n","10":"ଆହୁରି ଯୋଜନା:\n\n","11":"অধিক আঁচনি:\n\n","12":"ਹੋਰ ਯੋਜਨਾਵਾਂ:\n\n"}
+
+CONTINUE_MSG = {"1":"Reply 1 for {n} more schemes, or hi to restart.","2":"आणखी {n} योजनांसाठी 1 पाठवा, किंवा पुन्हा सुरू करण्यासाठी hi पाठवा.","3":"और {n} योजनाओं के लिए 1 भेजें, या फिर से शुरू करने के लिए hi भेजें.","4":"વધુ {n} યોજનાઓ માટે 1 મોકલો, અથવા ફરી શરૂ કરવા માટે hi મોકલો.","5":"আরও {n}টি প্রকল্পের জন্য 1 পাঠান, অথবা আবার শুরু করতে hi পাঠান।","6":"மேலும் {n} திட்டங்களுக்கு 1 எனப் பதிலளிக்கவும், அல்லது மீண்டும் தொடங்க hi எனப் பதிலளிக்கவும்.","7":"మరో {n} పథకాల కోసం 1 పంపండి, లేదా మళ్లీ ప్రారంభించడానికి hi పంపండి.","8":"ಇನ್ನೂ {n} ಯೋಜನೆಗಳಿಗಾಗಿ 1 ಕಳುಹಿಸಿ, ಅಥವಾ ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಲು hi ಕಳುಹಿಸಿ.","9":"ഇനിയും {n} പദ്ധതികൾക്കായി 1 അയക്കുക, അല്ലെങ്കിൽ വീണ്ടും ആരംഭിക്കാൻ hi അയക്കുക.","10":"ଆଉ {n} ଯୋଜନା ପାଇଁ 1 ପଠାନ୍ତୁ, କିମ୍ବା ପୁଣି ଆରମ୍ଭ କରିବାକୁ hi ପଠାନ୍ତୁ।","11":"আৰু {n}টা আঁচনিৰ বাবে 1 পঠিয়াওক, বা পুনৰ আৰম্ভ কৰিবলৈ hi পঠিয়াওক।","12":"ਹੋਰ {n} ਯੋਜਨਾਵਾਂ ਲਈ 1 ਭੇਜੋ, ਜਾਂ ਦੁਬਾਰਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ hi ਭੇਜੋ."}
+
+RESULTS_CLOSING = {"1":"This is a guide, not a guarantee — always confirm at your nearest Aaple Sarkar / Jan Seva Kendra. Reply hi to start again.","2":"ही फक्त मार्गदर्शक माहिती आहे, हमी नाही — जवळच्या आपले सरकार केंद्रावर खात्री करा. पुन्हा hi पाठवा.","3":"यह सिर्फ एक गाइड है, गारंटी नहीं — नज़दीकी आपले सरकार केंद्र पर पुष्टि करें। दोबारा hi भेजें.","4":"આ માર્ગદર્શન છે, ખાતરી નથી — નજીકના જન સેવા કેન્દ્ર પર ખાતરી કરો. ફરી hi મોકલો.","5":"এটি একটি নির্দেশিকা, গ্যারান্টি নয় — নিকটতম জন সেবা কেন্দ্রে নিশ্চিত করুন। আবার hi পাঠান।","6":"இது ஒரு வழிகாட்டி மட்டுமே, உத்தரவாதம் அல்ல — அருகிலுள்ள ஆப்லே சர்க்கார் / ஜன் சேவா கேந்திரத்தில் உறுதிப்படுத்தவும். மீண்டும் தொடங்க hi எனப் பதிலளிக்கவும்.","7":"ఇది ఒక మార్గదర్శిని మాత్రమే, హామీ కాదు — సమీప ఆప్లే సర్కార్ / జన సేవా కేంద్రంలో నిర్ధారించుకోండి. మళ్లీ ప్రారంభించడానికి hi అని పంపండి.","8":"ಇದು ಮಾರ್ಗದರ್ಶಿ ಮಾತ್ರ, ಖಾತರಿಯಲ್ಲ — ಹತ್ತಿರದ ಆಪ್ಲೆ ಸರ್ಕಾರ್ / ಜನ ಸೇವಾ ಕೇಂದ್ರದಲ್ಲಿ ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ. ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಲು hi ಎಂದು ಕಳುಹಿಸಿ.","9":"ഇത് ഒരു മാർഗ്ഗനിർദ്ദേശം മാത്രമാണ്, ഉറപ്പല്ല — അടുത്തുള്ള ആപ്ലെ സർക്കാർ / ജൻ സേവാ കേന്ദ്രത്തിൽ സ്ഥിരീകരിക്കുക. വീണ്ടും ആരംഭിക്കാൻ hi എന്ന് അയക്കുക.","10":"ଏହା ଏକ ମାର୍ଗଦର୍ଶିକା, ଗ୍ୟାରେଣ୍ଟି ନୁହେଁ — ନିକଟସ୍ଥ ଜନ ସେବା କେନ୍ଦ୍ରରେ ନିଶ୍ଚିତ କରନ୍ତୁ। ପୁଣି ଆରମ୍ଭ କରିବାକୁ hi ପଠାନ୍ତୁ।","11":"এইটো এটা নিৰ্দেশনা মাত্ৰ, নিশ্চয়তা নহয় — ওচৰৰ জন সেৱা কেন্দ্ৰত নিশ্চিত কৰক। পুনৰ আৰম্ভ কৰিবলৈ hi পঠিয়াওক।","12":"ਇਹ ਸਿਰਫ਼ ਇੱਕ ਮਾਰਗਦਰਸ਼ਨ ਹੈ, ਗਾਰੰਟੀ ਨਹੀਂ — ਨੇੜਲੇ ਜਨ ਸੇਵਾ ਕੇਂਦਰ ਵਿੱਚ ਪੁਸ਼ਟੀ ਕਰੋ। ਦੁਬਾਰਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ hi ਭੇਜੋ।"}
+
+# Some scheme records carry long, detailed caveats (sourcing/reasoning
+# documentation appended during data verification) that alone can exceed
+# WhatsApp's 1,024-char limit — one record ran to 1,824 characters by
+# itself. Capping each entry's benefit+caveat text is a hard backstop so a
+# single verbose record can never consume a whole page (or exceed the
+# platform limit outright), independent of how long any future edit makes it.
+MAX_ENTRY_BENEFIT_LEN = 450
+
+def format_results_page(matched, start_idx, lang):
+    """Build one page of results starting at matched[start_idx], staying
+    under RESULTS_CHAR_BUDGET. Returns (message_text, next_idx, done)."""
+    if start_idx == 0:
+        out = RESULTS_HEADER.get(lang, RESULTS_HEADER["1"]).format(n=len(matched))
+    else:
+        out = MORE_HEADER.get(lang, MORE_HEADER["1"])
+
+    i = start_idx
+    n = len(matched)
+    while i < n:
+        name, benefit, link = matched[i]
+        if len(benefit) > MAX_ENTRY_BENEFIT_LEN:
+            benefit = benefit[:MAX_ENTRY_BENEFIT_LEN].rstrip() + "..."
+        entry = f"{i+1}. {name}\n{benefit}\n{link}\n\n"
+        # Always include at least one scheme per page (even one that alone
+        # exceeds budget) so a single very long entry can't stall pagination.
+        if i > start_idx and len(out) + len(entry) > RESULTS_CHAR_BUDGET:
+            break
+        out += entry
+        i += 1
+
+    if i >= n:
+        out += RESULTS_CLOSING.get(lang, RESULTS_CLOSING["1"])
+        return out, i, True
+    out += CONTINUE_MSG.get(lang, CONTINUE_MSG["1"]).format(n=n - i)
+    return out, i, False
+
+app.config['MAX_CONTENT_LENGTH'] = 64 * 1024  # WhatsApp messages are short; reject oversized POST bodies outright
+
+_TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
+_twilio_validator = RequestValidator(_TWILIO_AUTH_TOKEN) if _TWILIO_AUTH_TOKEN else None
+
 @app.route("/whatsapp", methods=["POST"])
 def whatsapp():
+    # Without this, "From"/"Body" are trusted unconditionally — anyone who
+    # finds the webhook URL could POST an arbitrary From to hijack another
+    # user's in-progress session, bypassing Twilio/WhatsApp entirely. Only
+    # enforced when TWILIO_AUTH_TOKEN is configured (e.g. on Railway), so
+    # local dev without Twilio credentials still works.
+    if _twilio_validator is not None:
+        signature = request.headers.get("X-Twilio-Signature", "")
+        if not _twilio_validator.validate(request.url, request.form, signature):
+            abort(403)
+
     sender = request.form.get("From","")
     body = request.form.get("Body","").strip()
     resp = MessagingResponse()
@@ -569,17 +677,32 @@ def whatsapp():
         msg.body(FLOW[0]["q"])
         return str(resp)
 
-    if sender not in sessions:
+    session = sessions.get(sender)
+    if session is None:
         sessions[sender] = {"step":0,"profile":{}}
         msg.body(FLOW[0]["q"])
         return str(resp)
 
-    session = sessions[sender]
+    if "pending" in session:
+        pending = session["pending"]
+        page_text, next_idx, done = format_results_page(pending["matched"], pending["next_idx"], pending["lang"])
+        if done:
+            del sessions[sender]
+        else:
+            session["pending"]["next_idx"] = next_idx
+            sessions[sender] = session
+        msg.body(page_text)
+        return str(resp)
+
     idx = session["step"]
     profile = session["profile"]
     lang = profile.get("lang","1")
 
-    if not body.isdigit():
+    # A bounded ASCII-only pattern, not body.isdigit() — isdigit() accepts
+    # Unicode characters (e.g. superscript "²", circled "①") that int()
+    # cannot parse, and imposes no length cap, so a "digit-like" reply could
+    # otherwise raise an uncaught ValueError deep in int(body) below.
+    if not re.fullmatch(r"[0-9]{1,3}", body):
         msg.body("Please reply with a number / कृपया नंबर पाठवा / कृपया नंबर भेजें / કૃપા કરી નંબર મોકલો / অনুগ্রহ করে একটি সংখ্যা পাঠান / தயவுசெய்து ஒரு எண்ணை அனுப்பவும் / దయచేసి ఒక సంఖ్యను పంపండి / ದಯವಿಟ್ಟು ಒಂದು ಸಂಖ್ಯೆಯನ್ನು ಕಳುಹಿಸಿ / ദയവായി ഒരു നമ്പർ അയക്കുക / ଦୟାକରି ଏକ ସଂଖ୍ୟା ପଠାନ୍ତୁ / অনুগ্ৰহ কৰি এটা সংখ্যা পঠিয়াওক / ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਨੰਬਰ ਭੇਜੋ")
         return str(resp)
 
@@ -593,20 +716,21 @@ def whatsapp():
     session["profile"] = profile
     session["step"] = idx + 1
     sessions[sender] = session  # write back — the Redis-backed store returns a fresh copy per read, not a live reference
+    lang = profile.get("lang", lang)  # re-derive after writing — on the language-selection turn itself, `lang` above was still the stale pre-answer default and would otherwise render the disclaimer/next question in the wrong language
 
     if session["step"] >= len(FLOW):
         matched = match(profile)
         if not matched:
-            no = {"1":"No schemes matched. Visit Jan Seva Kendra.","2":"कोणतीही योजना जुळली नाही.","3":"कोई योजना नहीं मिली।","4":"કોઈ યોજના મળી નથી. જન સેવા કેન્દ્રની મુલાકાત લો.","5":"কোনো প্রকল্প মেলেনি। জন সেবা কেন্দ্রে যান।","6":"எந்த திட்டமும் பொருந்தவில்லை. அருகிலுள்ள ஜன் சேவா கேந்திரத்திற்கு செல்லவும்.","7":"ఏ పథకం సరిపోలలేదు. సమీప జన సేవా కేంద్రాన్ని సందర్శించండి.","8":"ಯಾವುದೇ ಯೋಜನೆ ಹೊಂದಿಕೆಯಾಗಿಲ್ಲ. ಹತ್ತಿರದ ಜನ ಸೇವಾ ಕೇಂದ್ರಕ್ಕೆ ಭೇಟಿ ನೀಡಿ.","9":"ഒരു പദ്ധതിയും യോജിച്ചില്ല. അടുത്തുള്ള ജൻ സേവാ കേന്ദ്രം സന്ദർശിക്കുക.","10":"କୌଣସି ଯୋଜନା ମେଳ ଖାଇଲା ନାହିଁ। ଜନ ସେବା କେନ୍ଦ୍ରକୁ ଯାଆନ୍ତୁ।","11":"কোনো আঁচনি মিলা নাই। জন সেৱা কেন্দ্ৰলৈ যাওক।","12":"ਕੋਈ ਯੋਜਨਾ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ। ਜਨ ਸੇਵਾ ਕੇਂਦਰ ਜਾਓ।"}
+            no = {"1":"No schemes matched. Visit Jan Seva Kendra.","2":"कोणतीही योजना जुळली नाही. जवळच्या जन सेवा केंद्राला भेट द्या.","3":"कोई योजना नहीं मिली। नज़दीकी जन सेवा केंद्र पर जाएँ।","4":"કોઈ યોજના મળી નથી. જન સેવા કેન્દ્રની મુલાકાત લો.","5":"কোনো প্রকল্প মেলেনি। জন সেবা কেন্দ্রে যান।","6":"எந்த திட்டமும் பொருந்தவில்லை. அருகிலுள்ள ஜன் சேவா கேந்திரத்திற்கு செல்லவும்.","7":"ఏ పథకం సరిపోలలేదు. సమీప జన సేవా కేంద్రాన్ని సందర్శించండి.","8":"ಯಾವುದೇ ಯೋಜನೆ ಹೊಂದಿಕೆಯಾಗಿಲ್ಲ. ಹತ್ತಿರದ ಜನ ಸೇವಾ ಕೇಂದ್ರಕ್ಕೆ ಭೇಟಿ ನೀಡಿ.","9":"ഒരു പദ്ധതിയും യോജിച്ചില്ല. അടുത്തുള്ള ജൻ സേവാ കേന്ദ്രം സന്ദർശിക്കുക.","10":"କୌଣସି ଯୋଜନା ମେଳ ଖାଇଲା ନାହିଁ। ଜନ ସେବା କେନ୍ଦ୍ରକୁ ଯାଆନ୍ତୁ।","11":"কোনো আঁচনি মিলা নাই। জন সেৱা কেন্দ্ৰলৈ যাওক।","12":"ਕੋਈ ਯੋਜਨਾ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ। ਜਨ ਸੇਵਾ ਕੇਂਦਰ ਜਾਓ।"}
             msg.body(no.get(lang,no["1"]))
+            del sessions[sender]
         else:
-            h = {"1":f"You qualify for {len(matched)} schemes!\n\n","2":f"तुम्ही {len(matched)} योजनांसाठी पात्र आहात!\n\n","3":f"आप {len(matched)} योजनाओं के लिए पात्र हैं!\n\n","4":f"તમે {len(matched)} યોજનાઓ માટે પાત્ર છો!\n\n","5":f"আপনি {len(matched)}টি প্রকল্পের জন্য যোগ্য!\n\n","6":f"நீங்கள் {len(matched)} திட்டங்களுக்கு தகுதியுடையவர்!\n\n","7":f"మీరు {len(matched)} పథకాలకు అర్హులు!\n\n","8":f"ನೀವು {len(matched)} ಯೋಜನೆಗಳಿಗೆ ಅರ್ಹರಾಗಿದ್ದೀರಿ!\n\n","9":f"നിങ്ങൾ {len(matched)} പദ്ധതികൾക്ക് അർഹരാണ്!\n\n","10":f"ଆପଣ {len(matched)} ଯୋଜନା ପାଇଁ ଯୋଗ୍ୟ!\n\n","11":f"আপুনি {len(matched)}টা আঁচনিৰ বাবে যোগ্য!\n\n","12":f"ਤੁਸੀਂ {len(matched)} ਯੋਜਨਾਵਾਂ ਲਈ ਯੋਗ ਹੋ!\n\n"}
-            out = h.get(lang,h["1"])
-            for i,(name,benefit,link) in enumerate(matched,1):
-                out += f"{i}. {name}\n{benefit}\n{link}\n\n"
-            out += {"1":"This is a guide, not a guarantee — always confirm at your nearest Aaple Sarkar / Jan Seva Kendra. Reply hi to start again.","2":"ही फक्त मार्गदर्शक माहिती आहे, हमी नाही — जवळच्या आपले सरकार केंद्रावर खात्री करा. पुन्हा hi पाठवा.","3":"यह सिर्फ एक गाइड है, गारंटी नहीं — नज़दीकी आपले सरकार केंद्र पर पुष्टि करें। दोबारा hi भेजें.","4":"આ માર્ગદર્શન છે, ખાતરી નથી — નજીકના જન સેવા કેન્દ્ર પર ખાતરી કરો. ફરી hi મોકલો.","5":"এটি একটি নির্দেশিকা, গ্যারান্টি নয় — নিকটতম জন সেবা কেন্দ্রে নিশ্চিত করুন। আবার hi পাঠান।","6":"இது ஒரு வழிகாட்டி மட்டுமே, உத்தரவாதம் அல்ல — அருகிலுள்ள ஆப்லே சர்க்கார் / ஜன் சேவா கேந்திரத்தில் உறுதிப்படுத்தவும். மீண்டும் தொடங்க hi எனப் பதிலளிக்கவும்.","7":"ఇది ఒక మార్గదర్శిని మాత్రమే, హామీ కాదు — సమీప ఆప్లే సర్కార్ / జన సేవా కేంద్రంలో నిర్ధారించుకోండి. మళ్లీ ప్రారంభించడానికి hi అని పంపండి.","8":"ಇದು ಮಾರ್ಗದರ್ಶಿ ಮಾತ್ರ, ಖಾತರಿಯಲ್ಲ — ಹತ್ತಿರದ ಆಪ್ಲೆ ಸರ್ಕಾರ್ / ಜನ ಸೇವಾ ಕೇಂದ್ರದಲ್ಲಿ ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ. ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಲು hi ಎಂದು ಕಳುಹಿಸಿ.","9":"ഇത് ഒരു മാർഗ്ഗനിർദ്ദേശം മാത്രമാണ്, ഉറപ്പല്ല — അടുത്തുള്ള ആപ്ലെ സർക്കാർ / ജൻ സേവാ കേന്ദ്രത്തിൽ സ്ഥിരീകരിക്കുക. വീണ്ടും ആരംഭിക്കാൻ hi എന്ന് അയക്കുക.","10":"ଏହା ଏକ ମାର୍ଗଦର୍ଶିକା, ଗ୍ୟାରେଣ୍ଟି ନୁହେଁ — ନିକଟସ୍ଥ ଜନ ସେବା କେନ୍ଦ୍ରରେ ନିଶ୍ଚିତ କରନ୍ତୁ। ପୁଣି ଆରମ୍ଭ କରିବାକୁ hi ପଠାନ୍ତୁ।","11":"এইটো এটা নিৰ্দেশনা মাত্ৰ, নিশ্চয়তা নহয় — ওচৰৰ জন সেৱা কেন্দ্ৰত নিশ্চিত কৰক। পুনৰ আৰম্ভ কৰিবলৈ hi পঠিয়াওক।","12":"ਇਹ ਸਿਰਫ਼ ਇੱਕ ਮਾਰਗਦਰਸ਼ਨ ਹੈ, ਗਾਰੰਟੀ ਨਹੀਂ — ਨੇੜਲੇ ਜਨ ਸੇਵਾ ਕੇਂਦਰ ਵਿੱਚ ਪੁਸ਼ਟੀ ਕਰੋ। ਦੁਬਾਰਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ hi ਭੇਜੋ।"}.get(lang,"Reply hi to start again.")
-            msg.body(out)
-        del sessions[sender]
+            page_text, next_idx, done = format_results_page(matched, 0, lang)
+            if done:
+                del sessions[sender]
+            else:
+                sessions[sender] = {"pending": {"matched": matched, "next_idx": next_idx, "lang": lang}}
+            msg.body(page_text)
     else:
         next_q = q(FLOW[session["step"]], lang)
         if idx == 0:
