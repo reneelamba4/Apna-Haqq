@@ -563,6 +563,13 @@ _NOT_INDIVIDUAL_FLAGS = {
     "entity_level_scheme_not_individual", "business_entity_scheme_not_individual",
     "benefit_is_institutional_not_individual", "group_based_scheme_not_individual_cash_benefit",
     "institution_level_scheme_not_individual", "not_individual_benefit",
+    # Found by a later scope-audit pass: several records already carried a
+    # descriptive not-for-individuals flag, just worded differently than
+    # the markers above, so the exclusion silently missed them.
+    "business_scheme_not_individual_beneficiary", "business_subsidy_not_individual_welfare",
+    "benefit_is_community_not_individual", "institutional_grant_not_direct_individual_benefit",
+    "institutional_grant_mostly_not_personal_income", "benefit_for_cooperative_entity_not_individual",
+    "benefit_for_group_entity_not_individual",
 }
 
 def _scheme_matches(scheme, up):

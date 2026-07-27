@@ -24,14 +24,16 @@
   "bank_account_required": true,
   "residency_required": true,
   "benefit_summary": "35% capital subsidy on eligible project cost (max Rs.1.5 crore) plus 6% interest subvention on loans, for SC/ST entrepreneurs starting or expanding businesses in Tamil Nadu.",
-  "caveats": "100% SC/ST-owned enterprise required; interest subvention capped to loan tenure up to 10 years, working-capital subvention up to 2 years.",
+  "caveats": "100% SC/ST-owned enterprise required; interest subvention capped to loan tenure up to 10 years, working-capital subvention up to 2 years. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "msmetamilnadu.tn.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "aag",
@@ -2545,14 +2547,16 @@
   "bank_account_required": true,
   "residency_required": true,
   "benefit_summary": "5% back-ended interest subsidy on term loans for new/upgrading micro and small manufacturing enterprises in Tamil Nadu, for 5 years -- capped at Rs.20 lakh (CGTMSE-backed loans up to Rs.2 crore) or Rs.25 lakh (technology upgradation loans up to Rs.5 crore); max Rs.10 lakh per loan up to Rs.1 crore.",
-  "caveats": "Interest subsidy reimbursed quarterly directly to the lending institution, not the borrower.",
+  "caveats": "Interest subsidy reimbursed quarterly directly to the lending institution, not the borrower. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "msmetamilnadu.tn.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "bhausaheb-fundkar-horticulture-plantataion-scheme",
@@ -3851,14 +3855,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Backend capital subsidy of 15-35% of project cost (up to Rs 20 lakh for service/business or Rs 50 lakh for manufacturing) for new self-employment ventures, via bank term loan.",
-  "caveats": "Age relaxed by 5 years (to 50) for SC/ST/OBC/women/ex-servicemen/disabled applicants. Minimum 7th std pass required for projects up to Rs 10 lakh; 10th std pass for projects above Rs 25 lakh.",
+  "caveats": "Age relaxed by 5 years (to 50) for SC/ST/OBC/women/ex-servicemen/disabled applicants. Minimum 7th std pass required for projects up to Rs 10 lakh; 10th std pass for projects above Rs 25 lakh. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "https://maitri.maharashtra.gov.in/about-us/department-initiative/cmegpchief-minister-employment-generation-programme-cmegp/"
   ],
-  "last_checked": "2026-07-15"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "cmenspy",
@@ -4392,16 +4398,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "25% capital subsidy on eligible plant & machinery for new MSME manufacturing enterprises in Tamil Nadu (cap Rs50 lakh under the 2021 Industrial Policy, per verification), plus additional 5-10% subsidy (cap Rs5-25 lakh) for women/SC/ST/disabled/transgender entrepreneurs, micro-enterprises, expansions, and clean-tech adoption.",
-  "caveats": "CORRECTED: original scheme document cites a Rs150 lakh cap; verification confirms the current cap is Rs50 lakh under the 2021 Industrial Policy - use Rs50 lakh as the current figure.",
+  "caveats": "CORRECTED: original scheme document cites a Rs150 lakh cap; verification confirms the current cap is Rs50 lakh under the 2021 Industrial Policy - use Rs50 lakh as the current figure. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "amount_corrected_by_verification_note"
+   "amount_corrected_by_verification_note",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [
    "msmetamilnadu.tn.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "css",
@@ -4660,14 +4667,16 @@
   "bank_account_required": null,
   "residency_required": false,
   "benefit_summary": "40% government subsidy on coir-unit project cost (cap Rs10 lakh, plus working capital up to 25% of cost); 55% bank credit, 5% beneficiary contribution.",
-  "caveats": "Special focus on SC/ST and North-East region applicants per verification note. Open to individuals, SHGs, NGOs, co-operatives, and trusts.",
+  "caveats": "Special focus on SC/ST and North-East region applicants per verification note. Open to individuals, SHGs, NGOs, co-operatives, and trusts. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "myscheme.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "cvcis",
@@ -4723,16 +4732,17 @@
   "bank_account_required": true,
   "residency_required": true,
   "benefit_summary": "Reimbursement of 50% of seat cost at SPC-listed co-working spaces (cap Rs3,000/seat), incubators (cap Rs5,000/seat), or accelerators (cap Rs6,000/seat), up to 8 seats/startup, for Goa Startup Promotion Cell-certified startups.",
-  "caveats": "Requires Aadhaar-linked bank account for digital payments to co-working providers.",
+  "caveats": "Requires Aadhaar-linked bank account for digital payments to co-working providers. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "residency_inferred_from_scheme_context"
+   "residency_inferred_from_scheme_context",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [
    "startup.goa.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "da-60ada",
@@ -5548,14 +5558,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Business loans up to Rs20 lakh for religious minority (Muslim/Christian/Sikh/Buddhist/Jain) entrepreneurs in Karnataka: 4% interest if family income <Rs8 lakh, 6% if Rs8-15 lakh; secured against property mortgage.",
-  "caveats": "Loan given to only one member of a family.",
+  "caveats": "Loan given to only one member of a family. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "kmdc.karnataka.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "dls-punjab",
@@ -6539,16 +6551,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Capital investment subsidy for MSMEs in Kerala: 15% (general, cap Rs30 lakh) or 25% (young 18-45/women/SC-ST/NRK, cap Rs40 lakh) of Fixed Capital Investment, plus an additional 10% (cap Rs10 lakh) for priority sectors, backward districts, or new technology; overall cap Rs40 lakh.",
-  "caveats": "CORRECTED: this is a percentage-based subsidy on capital investment, not a flat Rs30,000 amount as raw data suggested.",
+  "caveats": "CORRECTED: this is a percentage-based subsidy on capital investment, not a flat Rs30,000 amount as raw data suggested. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
-   "amount_corrected_by_verification_note"
+   "amount_corrected_by_verification_note",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [
    "industry.kerala.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "faabocwwb",
@@ -8711,14 +8724,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Subsidized business loan scheme for unemployed tribal youth in Goa to start micro/small manufacturing, service, or trade enterprises: 40% subsidy on loan amount, project cost caps of Rs 25 lakh (manufacturing) or Rs 15 lakh (service/trade), plus compulsory entrepreneurship training.",
-  "caveats": "Applicant must have passed Class 4 (relaxable), be a permanent Goa resident for 15+ years, and not be a loan defaulter; farming/tobacco activities are excluded.",
+  "caveats": "Applicant must have passed Class 4 (relaxable), be a permanent Goa resident for 15+ years, and not be a loan defaulter; farming/tobacco activities are excluded. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "goa.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "hhjmhhst",
@@ -15111,12 +15126,13 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Under Mukhyamantri Udyam Kranti Yojana (MUKY), the scheme MMSY was merged into via a Nov 2021 gazette notification: collateral-free loan of Rs.1,00,000 to Rs.50,00,000 (service-sector loans capped lower at up to Rs.25 lakh per some sources) with a flat 3% p.a. interest subsidy for up to 7 years, plus a CGTMSE credit-guarantee-fee subsidy.",
-  "caveats": "MMSY (along with Mukhyamantri Yuva Udyami Yojana and Mukhyamantri Krishak Udyami Yojana) was merged into Mukhyamantri Udyam Kranti Yojana (MUKY) via a gazette notification dated 29 Nov 2021 -- this record now reflects MUKY's current terms. Applicant age 18-40, minimum 12th pass (not 5th class), family income cap Rs.12 lakh/year. [Audit fix 2026-07-23] Corrected a record that (even after an internal 'correction') still described defunct standalone-MMSY terms nearly 5 years out of date. Updated to MUKY's actual current terms: age 18-40, 12th pass minimum, Rs.12 lakh income cap, Rs.1L-50L loan at flat 3% p.a. subsidy.",
+  "caveats": "MMSY (along with Mukhyamantri Yuva Udyami Yojana and Mukhyamantri Krishak Udyami Yojana) was merged into Mukhyamantri Udyam Kranti Yojana (MUKY) via a gazette notification dated 29 Nov 2021 -- this record now reflects MUKY's current terms. Applicant age 18-40, minimum 12th pass (not 5th class), family income cap Rs.12 lakh/year. [Audit fix 2026-07-23] Corrected a record that (even after an internal 'correction') still described defunct standalone-MMSY terms nearly 5 years out of date. Updated to MUKY's actual current terms: age 18-40, 12th pass minimum, Rs.12 lakh income cap, Rs.1L-50L loan at flat 3% p.a. subsidy. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "medium",
   "extraction_flags": [
    "scheme_possibly_merged_renamed",
-   "audit_fixed_2026-07-23"
+   "audit_fixed_2026-07-23",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [
    "khargone.nic.in"
@@ -15470,14 +15486,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Bank loan for self-employment for Chhattisgarh youth: up to Rs.25 lakh for manufacturing, Rs.10 lakh for services, Rs.2 lakh for business, with a margin money grant (10-25% of project cost, max Rs.1,00,000+) and interest subsidy (5% general / 8% for SC/ST/OBC/minority/women/disabled/ex-servicemen/Naxal-affected).",
-  "caveats": "Max age relaxed by 5 years for SC/ST/OBC/women/PWD/Naxal-affected family members/retired soldiers. Applicant must have passed at least 8th class, not be a loan defaulter, and family income must not exceed Rs.3,00,000/year. Only one person per family may apply; prior beneficiaries of PMRY/PMEGP or similar schemes are not eligible.",
+  "caveats": "Max age relaxed by 5 years for SC/ST/OBC/women/PWD/Naxal-affected family members/retired soldiers. Applicant must have passed at least 8th class, not be a loan defaulter, and family income must not exceed Rs.3,00,000/year. Only one person per family may apply; prior beneficiaries of PMRY/PMEGP or similar schemes are not eligible. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "umang.gov.in"
   ],
-  "last_checked": "2026-07-17"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "myyyt",
@@ -16180,14 +16198,16 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Capital subsidy of up to 25% of project cost (max Rs.75 lakh) plus 3% interest subvention for first-generation entrepreneurs in Tamil Nadu, aged 21-35 (up to 45 for women/BC/MBC/SC/ST/ex-servicemen/transgender/differently-abled), with an additional 10% capital subsidy for SC/ST or differently-abled promoted enterprises.",
-  "caveats": "Applicant must be a Tamil Nadu resident for at least 3 years, a first-generation entrepreneur with minimum 12th std/diploma/ITI qualification, and not a defaulter to any commercial bank or TIIC. Not eligible if already availed assistance under PMRY/REGP/PMEGP/UYEGP/TAHDCO or any SHG group loan. No income ceiling for the applicant.",
+  "caveats": "Applicant must be a Tamil Nadu resident for at least 3 years, a first-generation entrepreneur with minimum 12th std/diploma/ITI qualification, and not a defaulter to any commercial bank or TIIC. Not eligible if already availed assistance under PMRY/REGP/PMEGP/UYEGP/TAHDCO or any SHG group loan. No income ceiling for the applicant. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "msmetamilnadu.tn.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "nets",
@@ -16799,14 +16819,16 @@
   "bank_account_required": null,
   "residency_required": false,
   "benefit_summary": "Term loan of up to Rs.2,00,000 at a subsidized 5% per annum interest rate for self-employment, for women entrepreneurs from Backward Classes, with no self-contribution required for projects up to Rs.2,00,000 and repayment over up to 8 years.",
-  "caveats": "Applicant must belong to a Backward Class, be female, aged 18-55, an entrepreneur, with total annual family income under Rs.3,00,000. Implemented by NBCFDC through State Channelising Agencies (SCAs).",
+  "caveats": "Applicant must belong to a Backward Class, be female, aged 18-55, an entrepreneur, with total annual family income under Rs.3,00,000. Implemented by NBCFDC through State Channelising Agencies (SCAs). [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "nbcfdc.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "oasas",
@@ -17254,16 +17276,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Interest subvention (up to 6%, capping the effective loan rate at 4%) on term/working-capital loans up to Rs.10 lakh for 5 years, for new micro/small/medium enterprises in Kerala started on or after 1 April 2022, aiming for at least one MSME per household with 50% of beneficiaries being women.",
-  "caveats": "CORRECTED per verification note: not a flat cash amount - it is an interest subvention capped at loans up to Rs.10 lakh. Unit must have valid Udyam Registration, must not be an NPA, must be operational, and generally must not have received any other Central/State/local grant (exemption for PMFME-supported units that commenced post-expansion production after 1 April 2022).",
+  "caveats": "CORRECTED per verification note: not a flat cash amount - it is an interest subvention capped at loans up to Rs.10 lakh. Unit must have valid Udyam Registration, must not be an NPA, must be operational, and generally must not have received any other Central/State/local grant (exemption for PMFME-supported units that commenced post-expansion production after 1 April 2022). [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "amount_corrected_by_verification_note"
+   "amount_corrected_by_verification_note",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [
    "industry.kerala.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pas",
@@ -17711,14 +17734,16 @@
   "bank_account_required": null,
   "residency_required": false,
   "benefit_summary": "Margin money subsidy of 15-35% (varies by category and urban/rural location) for setting up new micro-enterprises, with project cost ceiling Rs.50 lakh (manufacturing) or Rs.20 lakh (service sector); beneficiary contributes 5-10% of project cost; implemented by KVIC.",
-  "caveats": "No income ceiling. Projects costing above Rs.10 lakh (manufacturing) or Rs.5 lakh (service) require at least VIII standard pass qualification. Only for new projects sanctioned specifically under PMEGP - not for units that already availed subsidy under PMRY/REGP or any other government scheme. Priority given to disaster-affected persons.",
+  "caveats": "No income ceiling. Projects costing above Rs.10 lakh (manufacturing) or Rs.5 lakh (service) require at least VIII standard pass qualification. Only for new projects sanctioned specifically under PMEGP - not for units that already availed subsidy under PMRY/REGP or any other government scheme. Priority given to disaster-affected persons. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "kviconline.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pmfby",
@@ -17809,17 +17834,18 @@
   "bank_account_required": null,
   "residency_required": false,
   "benefit_summary": "Collateral-free micro-credit for income-generating non-farm micro/small enterprises, in tiers: Shishu (up to Rs.50,000), Kishore (Rs.50,001-5 lakh), Tarun (Rs.5-10 lakh), and Tarun Plus (Rs.10-20 lakh, for those who successfully repaid a prior Tarun loan) - overall ceiling raised from Rs.10 lakh to Rs.20 lakh via Budget 2024-25, effective 24 October 2024.",
-  "caveats": "CORRECTED per verification note: the ceiling was raised to Rs.20 lakh (with the new Tarun Plus tier) - update any reference still capping this scheme at Rs.10 lakh. Applicant must not be a defaulter to any bank/financial institution and must have a satisfactory credit record.",
+  "caveats": "CORRECTED per verification note: the ceiling was raised to Rs.20 lakh (with the new Tarun Plus tier) - update any reference still capping this scheme at Rs.10 lakh. Applicant must not be a defaulter to any bank/financial institution and must have a satisfactory credit record. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "amount_corrected_by_verification_note"
+   "amount_corrected_by_verification_note",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [
    "sanskritiias.com",
    "myscheme.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pmkvy-rpl",
@@ -18284,16 +18310,17 @@
   "bank_account_required": true,
   "residency_required": true,
   "benefit_summary": "Financial assistance of Rs.25,000 per member (Rs.15,000 subsidy + Rs.10,000 loan at 4% interest) for SC/ST women in Karnataka forming a Self Help Group of 10 members (total Rs.2.5 lakh per SHG) to start an income-generating business.",
-  "caveats": "Family income must not exceed Rs.1,50,000/year (rural) or Rs.2,00,000/year (urban) - use the higher urban figure as the general threshold. SHG's business unit/stall must be at least 200 sq ft. Not eligible if the applicant or a family member has already availed a subsidy from the Corporation/Government of Karnataka. Loan repayable in 36 monthly or 12 quarterly installments.",
+  "caveats": "Family income must not exceed Rs.1,50,000/year (rural) or Rs.2,00,000/year (urban) - use the higher urban figure as the general threshold. SHG's business unit/stall must be at least 200 sq ft. Not eligible if the applicant or a family member has already availed a subsidy from the Corporation/Government of Karnataka. Loan repayable in 36 monthly or 12 quarterly installments. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "income_threshold_varies_rural_urban"
+   "income_threshold_varies_rural_urban",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [
    "myscheme.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "pmsswwcpfp",
@@ -19283,7 +19310,7 @@
   "sources": [
    "industry.kerala.gov.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Kerala",
   "min_age": null,
   "max_age": null,
@@ -19303,10 +19330,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "CORRECTED: capital grant/working capital assistance for defunct MSMEs (max Rs.12 lakh/unit) and defunct cashew processing units (max Rs.15 lakh/unit) in Kerala, structured as building renovation (25%, cap Rs.2L), plant & machinery (40%, cap Rs.8L), and working capital margin support.",
-  "caveats": "Unit must have been non-operational 6+ months but revivable; available only once per applicant unit; bank sanction of fresh working capital loan mandatory for the margin-money component.",
+  "caveats": "Unit must have been non-operational 6+ months but revivable; available only once per applicant unit; bank sanction of fresh working capital loan mandatory for the margin-money component. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "occupation_not_standard"
+   "occupation_not_standard",
+   "business_entity_scheme_not_individual"
   ]
  },
  {
@@ -19701,11 +19729,12 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Initial capital subsidy up to Rs.10 lakh plus training/mentorship for SC entrepreneurs in Karnataka to set up franchise/dealership retail businesses, targeting 25,000 entrepreneurs over 3 years.",
-  "caveats": "Applicant must have passed SSLC; selection is merit-based via district-level screening and franchisor approval. [Audit fix 2026-07-23] Added missing max_age=50 and max_income=Rs.5,00,000/year per the Dr. B.R. Ambedkar Development Corporation's official Samruddhi Scheme criteria -- both were previously null, which would have wrongly told over-50 or higher-income applicants they qualify.",
+  "caveats": "Applicant must have passed SSLC; selection is merit-based via district-level screening and franchisor approval. [Audit fix 2026-07-23] Added missing max_age=50 and max_income=Rs.5,00,000/year per the Dr. B.R. Ambedkar Development Corporation's official Samruddhi Scheme criteria -- both were previously null, which would have wrongly told over-50 or higher-income applicants they qualify. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "extraction_confidence": "high",
   "extraction_flags": [
    "occupation_not_standard",
-   "audit_fixed_2026-07-23"
+   "audit_fixed_2026-07-23",
+   "business_entity_scheme_not_individual"
   ]
  },
  {
@@ -20959,7 +20988,7 @@
   "sources": [
    "industry.kerala.gov.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Kerala",
   "min_age": null,
   "max_age": null,
@@ -20979,10 +21008,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "CORRECTED: 6% per annum interest subvention (8% for women/SC-ST enterprises) for 3 years on term loans for Nano/household enterprises in Kerala with fixed capital investment up to Rs.10 lakh.",
-  "caveats": "Unit must be in white/green pollution category with connected load <=5HP; subvention stops if loan repayment is defaulted in any year.",
+  "caveats": "Unit must be in white/green pollution category with connected load <=5HP; subvention stops if loan repayment is defaulted in any year. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "occupation_not_standard"
+   "occupation_not_standard",
+   "business_entity_scheme_not_individual"
   ]
  },
  {
@@ -21120,7 +21150,7 @@
   "sources": [
    "industry.kerala.gov.in"
   ],
-  "last_checked": "2026-07-16",
+  "last_checked": "2026-07-23",
   "state": "Kerala",
   "min_age": null,
   "max_age": 40,
@@ -21140,9 +21170,11 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "CORRECTED: Margin Money Grant of 30% of project cost (cap Rs.3 lakh, general) or 40% (cap Rs.4 lakh, for women/youth 18-40/disabled/ex-servicemen/SC-ST with +10% additional grant) for Nano enterprises in Kerala with project cost up to Rs.10 lakh.",
-  "caveats": "Unit must not have availed any prior government grant assistance; must remain operational for 3 years from receipt of grant.",
+  "caveats": "Unit must not have availed any prior government grant assistance; must remain operational for 3 years from receipt of grant. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "extraction_confidence": "high",
-  "extraction_flags": []
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ]
  },
  {
   "scheme_id": "sms",
@@ -22492,17 +22524,18 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Loan of Rs.50,000 at 4% interest (36 installments) for religious minority community entrepreneurs, with artisan/technical skill training; up to 50% back-end subsidy if 50% repaid within 36 months.",
-  "caveats": "Restricted to State Religious Minority Community members. Applicant/family must not have used another KMDCL scheme (except Arivu) in last 5 years. Duplicate entries noted for this scheme - recommend merging.",
+  "caveats": "Restricted to State Religious Minority Community members. Applicant/family must not have used another KMDCL scheme (except Arivu) in last 5 years. Duplicate entries noted for this scheme - recommend merging. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "religious_minority_criterion_not_modeled"
+   "religious_minority_criterion_not_modeled",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [
    "myscheme.gov.in",
    "loansubsidy.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "sss-gujarat",
@@ -23058,12 +23091,13 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Bank loan up to Rs.25 lakh/sector (raised from Rs.8 lakh) with subsidy of 25-40% (rural) or 20-30% (urban) depending on category, now capped at Rs.3,75,000 (General category) or Rs.5,00,000 (SC/ST/Divyang/Women/Ex-servicemen) -- raised from the old Rs.1,25,000 cap, effective FY2025-26 under Gujarat's Cottage and Village Industries Policy 2024.",
-  "caveats": "Requires min. 4th standard pass plus relevant training/experience, or hereditary craftsperson status. No income criteria. SC/ST/ex-servicemen/women/40%+ disabled get higher subsidy rates. [Audit fix 2026-07-23] Updated loan/subsidy caps to the FY2025-26 revision (GRs dated May-June 2025): max loan Rs.25 lakh (from Rs.8 lakh), max subsidy Rs.3.75 lakh General / Rs.5 lakh SC-ST-Divyang (from Rs.1.25 lakh).",
+  "caveats": "Requires min. 4th standard pass plus relevant training/experience, or hereditary craftsperson status. No income criteria. SC/ST/ex-servicemen/women/40%+ disabled get higher subsidy rates. [Audit fix 2026-07-23] Updated loan/subsidy caps to the FY2025-26 revision (GRs dated May-June 2025): max loan Rs.25 lakh (from Rs.8 lakh), max subsidy Rs.3.75 lakh General / Rs.5 lakh SC-ST-Divyang (from Rs.1.25 lakh). [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
    "income_not_a_criterion",
-   "audit_fixed_2026-07-23"
+   "audit_fixed_2026-07-23",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [],
   "last_checked": "2026-07-23"
@@ -24201,15 +24235,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Business loan (Rs.1-3 lakh unit cost) with subsidy: 50% for SC/ST women (income<=Rs.2 lakh), 30% (max Rs.90,000) for general/special category women, plus EDP training.",
-  "caveats": "No income limit for widowed or disabled women. Must not have defaulted on a prior loan.",
+  "caveats": "No income limit for widowed or disabled women. Must not have defaulted on a prior loan. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
-  "extraction_flags": [],
+  "extraction_flags": [
+   "business_entity_scheme_not_individual"
+  ],
   "sources": [
    "myscheme.gov.in",
    "bajajfinserv.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "vdcspds",
@@ -24290,16 +24326,17 @@
   "bank_account_required": null,
   "residency_required": true,
   "benefit_summary": "Subsidy up to 25% of project cost (max Rs.2.5 lakh) for setting up manufacturing (loan up to Rs.15 lakh)/service/trading (loan up to Rs.5 lakh) enterprises.",
-  "caveats": "Age cap extends to 45 for SC/ST/MBC/BC/Minorities/Ex-servicemen/Differently-abled/Transgender applicants. Minimum 8th standard pass; EDP training mandatory; applicant contributes 10% (general) or 5% (special category) of project cost.",
+  "caveats": "Age cap extends to 45 for SC/ST/MBC/BC/Minorities/Ex-servicemen/Differently-abled/Transgender applicants. Minimum 8th standard pass; EDP training mandatory; applicant contributes 10% (general) or 5% (special category) of project cost. [Scope audit 2026-07-23] Flagged out of scope for this individual-citizen eligibility bot -- this is a business/enterprise capital subsidy or loan scheme, not a personal welfare benefit; no business-owner path exists in the chatbot flow.",
   "source_confidence": "verified",
   "extraction_confidence": "high",
   "extraction_flags": [
-   "age_limit_varies_by_category"
+   "age_limit_varies_by_category",
+   "business_entity_scheme_not_individual"
   ],
   "sources": [
    "msmetamilnadu.tn.gov.in"
   ],
-  "last_checked": "2026-07-16"
+  "last_checked": "2026-07-23"
  },
  {
   "scheme_id": "vfas",
