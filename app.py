@@ -254,7 +254,7 @@ WORKER_BOARD_MAP = {"1":True,"2":False,"3":None}
 # the generic engine's output for Maharashtra profiles via
 # MAHARASHTRA_CURATED_SLUGS, so users don't see the same scheme twice with
 # two different (and possibly conflicting) benefit descriptions.
-MAHARASHTRA_CURATED_SLUGS = {"pmjdy","pmsby","osc","sgngs","nsap-ignoaps","sbssps","pmuy","pmuy2"}
+MAHARASHTRA_CURATED_SLUGS = {"pmjdy","pmsby","osc","sgngs","nsap-ignoaps","sbssps","pmuy","pmuy2","mjpjay"}
 
 # Each entry's "text" dict is keyed by FLOW's numeric lang code (1=en,2=mr,...)
 # and holds (name, benefit) tuples — translations are machine-quality first
@@ -551,7 +551,23 @@ def _profile_criteria(p):
     }
 
 
+# A handful of records are institutional/entity-level grants (e.g. an
+# "award for institutions engaged in..." or a rural-development fund paid
+# to a Gram Panchayat) that were kept in the database for completeness but
+# flagged during extraction as not something an individual can apply for.
+# With every eligibility field left null (there's no "are you an
+# institution" question), these matched 100% of users in their state —
+# telling real people they qualify for a scheme aimed at organizations.
+_NOT_INDIVIDUAL_FLAGS = {
+    "not_individual_welfare_scheme", "institutional_award", "institutional_or_individual_award",
+    "entity_level_scheme_not_individual", "business_entity_scheme_not_individual",
+    "benefit_is_institutional_not_individual", "group_based_scheme_not_individual_cash_benefit",
+    "institution_level_scheme_not_individual", "not_individual_benefit",
+}
+
 def _scheme_matches(scheme, up):
+    if _NOT_INDIVIDUAL_FLAGS.intersection(scheme.get("extraction_flags") or ()):
+        return False
     # Ambiguous-state records (state_guess was null at extraction time)
     # are excluded from matching entirely rather than guessed at — see
     # the schema-design notes for why.
@@ -659,7 +675,14 @@ RESULTS_TOTAL_TARGET = 950  # keep real margin under WhatsApp's 1,024-char hard 
 _FOOTER_RESERVE = 160       # >= the longest RESULTS_CLOSING/CONTINUE_MSG string in any language
 RESULTS_CHAR_BUDGET = RESULTS_TOTAL_TARGET - _FOOTER_RESERVE
 
-RESULTS_HEADER = {"1":"You qualify for {n} schemes!\n\n","2":"तुम्ही {n} योजनांसाठी पात्र आहात!\n\n","3":"आप {n} योजनाओं के लिए पात्र हैं!\n\n","4":"તમે {n} યોજનાઓ માટે પાત્ર છો!\n\n","5":"আপনি {n}টি প্রকল্পের জন্য যোগ্য!\n\n","6":"நீங்கள் {n} திட்டங்களுக்கு தகுதியுடையவர்!\n\n","7":"మీరు {n} పథకాలకు అర్హులు!\n\n","8":"ನೀವು {n} ಯೋಜನೆಗಳಿಗೆ ಅರ್ಹರಾಗಿದ್ದೀರಿ!\n\n","9":"നിങ്ങൾ {n} പദ്ധതികൾക്ക് അർഹരാണ്!\n\n","10":"ଆପଣ {n} ଯୋଜନା ପାଇଁ ଯୋଗ୍ୟ!\n\n","11":"আপুনি {n}টা আঁচনিৰ বাবে যোগ্য!\n\n","12":"ਤੁਸੀਂ {n} ਯੋਜਨਾਵਾਂ ਲਈ ਯੋਗ ਹੋ!\n\n"}
+# "May be eligible", not "you qualify" -- the matching is deliberately
+# over-inclusive (INCOME_MAP uses each bracket's lower bound on purpose,
+# false positives are cheaper than false negatives here), and the
+# disclaimer shown right after language selection plus RESULTS_CLOSING
+# right after this list both already say "guidance, not a guarantee" --
+# this header shouldn't be the one place in the conversation that states
+# eligibility as settled fact.
+RESULTS_HEADER = {"1":"You may be eligible for {n} schemes — check the details below:\n\n","2":"तुम्ही {n} योजनांसाठी पात्र असू शकता — खालील तपशील पहा:\n\n","3":"आप {n} योजनाओं के लिए पात्र हो सकते हैं — नीचे विवरण देखें:\n\n","4":"તમે {n} યોજનાઓ માટે પાત્ર હોઈ શકો છો — નીચે વિગતો જુઓ:\n\n","5":"আপনি {n}টি প্রকল্পের জন্য যোগ্য হতে পারেন — নিচের বিবরণ দেখুন:\n\n","6":"நீங்கள் {n} திட்டங்களுக்கு தகுதியுடையவராக இருக்கலாம் — கீழே உள்ள விவரங்களைப் பார்க்கவும்:\n\n","7":"మీరు {n} పథకాలకు అర్హులు కావచ్చు — దిగువ వివరాలను చూడండి:\n\n","8":"ನೀವು {n} ಯೋಜನೆಗಳಿಗೆ ಅರ್ಹರಾಗಿರಬಹುದು — ಕೆಳಗಿನ ವಿವರಗಳನ್ನು ನೋಡಿ:\n\n","9":"നിങ്ങൾ {n} പദ്ധതികൾക്ക് അർഹരായിരിക്കാം — താഴെയുള്ള വിവരങ്ങൾ കാണുക:\n\n","10":"ଆପଣ {n} ଯୋଜନା ପାଇଁ ଯୋଗ୍ୟ ହୋଇପାରନ୍ତି — ନିମ୍ନରେ ବିବରଣୀ ଦେଖନ୍ତୁ:\n\n","11":"আপুনি {n}টা আঁচনিৰ বাবে যোগ্য হ'ব পাৰে — তলৰ বিৱৰণ চাওক:\n\n","12":"ਤੁਸੀਂ {n} ਯੋਜਨਾਵਾਂ ਲਈ ਯੋਗ ਹੋ ਸਕਦੇ ਹੋ — ਹੇਠਾਂ ਵੇਰਵੇ ਵੇਖੋ:\n\n"}
 
 MORE_HEADER = {"1":"More schemes:\n\n","2":"आणखी योजना:\n\n","3":"और योजनाएं:\n\n","4":"વધુ યોજનાઓ:\n\n","5":"আরও প্রকল্প:\n\n","6":"மேலும் திட்டங்கள்:\n\n","7":"మరిన్ని పథకాలు:\n\n","8":"ಇನ್ನಷ್ಟು ಯೋಜನೆಗಳು:\n\n","9":"കൂടുതൽ പദ്ധതികൾ:\n\n","10":"ଆହୁରି ଯୋଜନା:\n\n","11":"অধিক আঁচনি:\n\n","12":"ਹੋਰ ਯੋਜਨਾਵਾਂ:\n\n"}
 
@@ -680,6 +703,26 @@ RESULTS_CLOSING = {"1":"This is a guide, not a guarantee — always confirm at y
 # single verbose record can never consume a whole page (or exceed the
 # platform limit outright), independent of how long any future edit makes it.
 MAX_ENTRY_BENEFIT_LEN = 450
+_CAVEAT_MARKER = "\n⚠ "
+
+def _truncate_benefit(benefit):
+    """Shorten an over-length benefit+caveat string. The caveat (marked
+    with the ⚠ prefix in match()) is the risk-disclosure half -- eKYC
+    requirements, income caps, "genuinely uncertain", "do not confuse with
+    X" warnings -- and matters more to not misleading a user than the
+    narrative summary preceding it. Naively truncating from the tail always
+    cut the caveat first (it's always last), sometimes leaving only an
+    unconditional-sounding benefit sentence visible. Shorten the summary
+    instead, and only fall back to trimming the caveat itself if it alone
+    exceeds the budget."""
+    if _CAVEAT_MARKER not in benefit:
+        return benefit[:MAX_ENTRY_BENEFIT_LEN].rstrip() + "..."
+    summary, caveat = benefit.split(_CAVEAT_MARKER, 1)
+    caveat_block = _CAVEAT_MARKER + caveat
+    if len(caveat_block) >= MAX_ENTRY_BENEFIT_LEN:
+        return caveat_block[:MAX_ENTRY_BENEFIT_LEN].rstrip() + "..."
+    available = MAX_ENTRY_BENEFIT_LEN - len(caveat_block) - 3
+    return summary[:max(0, available)].rstrip() + "..." + caveat_block
 
 def format_results_page(matched, start_idx, lang):
     """Build one page of results starting at matched[start_idx], staying
@@ -694,7 +737,7 @@ def format_results_page(matched, start_idx, lang):
     while i < n:
         name, benefit, link = matched[i]
         if len(benefit) > MAX_ENTRY_BENEFIT_LEN:
-            benefit = benefit[:MAX_ENTRY_BENEFIT_LEN].rstrip() + "..."
+            benefit = _truncate_benefit(benefit)
         entry = f"{i+1}. {name}\n{benefit}\n{link}\n\n"
         # Always include at least one scheme per page (even one that alone
         # exceeds budget) so a single very long entry can't stall pagination.
@@ -783,7 +826,13 @@ def whatsapp():
     if session["step"] >= len(FLOW):
         matched = match(profile)
         if not matched:
-            no = {"1":"No schemes matched. Visit Jan Seva Kendra.","2":"कोणतीही योजना जुळली नाही. जवळच्या जन सेवा केंद्राला भेट द्या.","3":"कोई योजना नहीं मिली। नज़दीकी जन सेवा केंद्र पर जाएँ।","4":"કોઈ યોજના મળી નથી. જન સેવા કેન્દ્રની મુલાકાત લો.","5":"কোনো প্রকল্প মেলেনি। জন সেবা কেন্দ্রে যান।","6":"எந்த திட்டமும் பொருந்தவில்லை. அருகிலுள்ள ஜன் சேவா கேந்திரத்திற்கு செல்லவும்.","7":"ఏ పథకం సరిపోలలేదు. సమీప జన సేవా కేంద్రాన్ని సందర్శించండి.","8":"ಯಾವುದೇ ಯೋಜನೆ ಹೊಂದಿಕೆಯಾಗಿಲ್ಲ. ಹತ್ತಿರದ ಜನ ಸೇವಾ ಕೇಂದ್ರಕ್ಕೆ ಭೇಟಿ ನೀಡಿ.","9":"ഒരു പദ്ധതിയും യോജിച്ചില്ല. അടുത്തുള്ള ജൻ സേവാ കേന്ദ്രം സന്ദർശിക്കുക.","10":"କୌଣସି ଯୋଜନା ମେଳ ଖାଇଲା ନାହିଁ। ଜନ ସେବା କେନ୍ଦ୍ରକୁ ଯାଆନ୍ତୁ।","11":"কোনো আঁচনি মিলা নাই। জন সেৱা কেন্দ্ৰলৈ যাওক।","12":"ਕੋਈ ਯੋਜਨਾ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ। ਜਨ ਸੇਵਾ ਕੇਂਦਰ ਜਾਓ।"}
+            # Framed as "not found in Haqq's list" rather than "nothing is
+            # available" -- coverage is necessarily incomplete (several
+            # flagship central schemes aren't in schemes_eligibility.json
+            # yet, and records with an unresolved state are excluded from
+            # matching entirely), so a flat "no schemes matched" overstates
+            # how complete a negative result actually is.
+            no = {"1":"We didn't find a match in Haqq's current list — that doesn't mean nothing is available. Please also check with your nearest Jan Seva Kendra.","2":"Haqq च्या सध्याच्या यादीत जुळणारी कोणतीही योजना सापडली नाही — याचा अर्थ काहीच उपलब्ध नाही असे नाही. कृपया जवळच्या जन सेवा केंद्रातही चौकशी करा.","3":"Haqq की मौजूदा सूची में कोई योजना नहीं मिली — इसका मतलब यह नहीं कि कुछ भी उपलब्ध नहीं है। कृपया नज़दीकी जन सेवा केंद्र पर भी पूछताछ करें।","4":"Haqq ની હાલની યાદીમાં કોઈ યોજના મળી નથી — તેનો અર્થ એ નથી કે કંઈ ઉપલબ્ધ નથી. કૃપા કરી નજીકના જન સેવા કેન્દ્રમાં પણ તપાસ કરો.","5":"Haqq-এর বর্তমান তালিকায় কোনো প্রকল্প মেলেনি — এর মানে এই নয় যে কিছুই নেই। অনুগ্রহ করে নিকটতম জন সেবা কেন্দ্রেও খোঁজ নিন।","6":"Haqq இன் தற்போதைய பட்டியலில் எந்தத் திட்டமும் பொருந்தவில்லை — எதுவும் இல்லை என்று அர்த்தமல்ல. தயவுசெய்து அருகிலுள்ள ஜன் சேவா கேந்திரத்திலும் விசாரிக்கவும்.","7":"Haqq ప్రస్తుత జాబితాలో ఏ పథకం సరిపోలలేదు — ఏమీ లేదని కాదు. దయచేసి సమీప జన సేవా కేంద్రంలో కూడా విచారించండి.","8":"Haqq ನ ಪ್ರಸ್ತುತ ಪಟ್ಟಿಯಲ್ಲಿ ಯಾವುದೇ ಯೋಜನೆ ಹೊಂದಿಕೆಯಾಗಿಲ್ಲ — ಏನೂ ಲಭ್ಯವಿಲ್ಲ ಎಂದು ಅರ್ಥವಲ್ಲ. ದಯವಿಟ್ಟು ಹತ್ತಿರದ ಜನ ಸೇವಾ ಕೇಂದ್ರದಲ್ಲಿಯೂ ವಿಚಾರಿಸಿ.","9":"Haqq ന്റെ നിലവിലെ ലിസ്റ്റിൽ ഒരു പദ്ധതിയും യോജിച്ചില്ല — ഒന്നും ലഭ്യമല്ല എന്നല്ല ഇതിനർത്ഥം. ദയവായി അടുത്തുള്ള ജൻ സേവാ കേന്ദ്രത്തിലും അന്വേഷിക്കുക.","10":"Haqq ର ବର୍ତ୍ତମାନର ତାଲିକାରେ କୌଣସି ଯୋଜନା ମେଳ ଖାଇଲା ନାହିଁ — ଏହାର ଅର୍ଥ ନୁହେଁ ଯେ କିଛି ଉପଲବ୍ଧ ନାହିଁ। ଦୟାକରି ନିକଟସ୍ଥ ଜନ ସେବା କେନ୍ଦ୍ରରେ ମଧ୍ୟ ଖୋଜ କରନ୍ତୁ।","11":"Haqq ৰ বৰ্তমান তালিকাত কোনো আঁচনি মিলা নাই — ইয়াৰ অৰ্থ এই নহয় যে একো উপলব্ধ নাই। অনুগ্ৰহ কৰি ওচৰৰ জন সেৱা কেন্দ্ৰতো বিচাৰি চাওক।","12":"Haqq ਦੀ ਮੌਜੂਦਾ ਸੂਚੀ ਵਿੱਚ ਕੋਈ ਯੋਜਨਾ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ — ਇਸਦਾ ਮਤਲਬ ਇਹ ਨਹੀਂ ਕਿ ਕੁਝ ਵੀ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਨੇੜਲੇ ਜਨ ਸੇਵਾ ਕੇਂਦਰ ਵਿੱਚ ਵੀ ਪੁੱਛਗਿੱਛ ਕਰੋ।"}
             msg.body(no.get(lang,no["1"]))
             del sessions[sender]
         else:
